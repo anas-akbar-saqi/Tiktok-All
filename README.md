@@ -1,7 +1,7 @@
 # 🚀 TikTok Code Snippets
 
 <p align="center">
-  <img src="https://via.placeholder.com/900x250.png?text=TikTok+Code+Snippets" />
+  <img src="https://raw.githubusercontent.com/anas-akbar-saqi/anas-akbar-saqi/main/header.svg" />
 </p>
 
 All the code from my TikTok videos is available here.  
