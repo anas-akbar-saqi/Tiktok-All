@@ -1,0 +1,2999 @@
+<!doctype html>
+<html lang="ur-PK">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eid Mubarak 💛</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel+Decorative:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --p1: #080316;
+        --p2: #120828;
+        --p3: #1e0c3c;
+        --p4: #2d1557;
+        --p5: #421f7a;
+        --gold: #e8b84b;
+        --g2: #f5cb6a;
+        --g3: #fff0b0;
+        --gd: #9a7020;
+        --rose: #e8507a;
+        --r2: #f07898;
+        --r3: #ffc4d8;
+        --rd: #8b1a35;
+        --cr: #fffdf5;
+      }
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+      body {
+        font-family: "Cormorant Garamond", serif;
+        background: var(--p1);
+        color: var(--cr);
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        cursor: none;
+      }
+
+      /* CURSOR */
+      #cur {
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: radial-gradient(circle, #fff, var(--gold));
+        pointer-events: none;
+        z-index: 99999;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 0 14px rgba(232, 184, 75, 0.8);
+        will-change: left, top;
+      }
+      #curR {
+        position: fixed;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 1.5px solid rgba(232, 184, 75, 0.38);
+        pointer-events: none;
+        z-index: 99998;
+        transform: translate(-50%, -50%);
+        will-change: left, top;
+      }
+      .trail {
+        position: fixed;
+        pointer-events: none;
+        z-index: 99990;
+        font-size: 11px;
+        animation: trFade 0.7s ease forwards;
+        transform: translate(-50%, -50%);
+      }
+      @keyframes trFade {
+        0% {
+          opacity: 0.8;
+          transform: translate(-50%, -50%) scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: translate(-50%, -130%) scale(0.2);
+        }
+      }
+
+      /* CANVAS */
+      #bgC {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+      }
+      #fxC {
+        position: fixed;
+        inset: 0;
+        z-index: 46;
+        pointer-events: none;
+      }
+      #hbg {
+        position: fixed;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        overflow: hidden;
+      }
+      .hb {
+        position: absolute;
+        pointer-events: none;
+        animation: hRise linear infinite;
+        opacity: 0;
+      }
+      @keyframes hRise {
+        0% {
+          transform: translateY(0) rotate(-12deg);
+          opacity: 0;
+        }
+        8% {
+          opacity: 0.5;
+        }
+        90% {
+          opacity: 0.3;
+        }
+        100% {
+          transform: translateY(-115vh) rotate(18deg);
+          opacity: 0;
+        }
+      }
+      .veil {
+        position: fixed;
+        inset: 0;
+        z-index: 2;
+        pointer-events: none;
+        background:
+          radial-gradient(
+            ellipse 88% 68% at 50% 25%,
+            rgba(29, 12, 62, 0.88) 0%,
+            transparent 68%
+          ),
+          radial-gradient(
+            ellipse 72% 58% at 50% 98%,
+            rgba(8, 3, 22, 0.96) 0%,
+            transparent 62%
+          );
+      }
+
+      /* SCROLL PROGRESS */
+      #spb {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 2.5px;
+        width: 0%;
+        background: linear-gradient(90deg, var(--rose), var(--gold), var(--r2));
+        z-index: 9999;
+        box-shadow: 0 0 10px rgba(232, 184, 75, 0.6);
+        transition: width 0.08s linear;
+      }
+
+      /* LOCK */
+      #lock {
+        position: fixed;
+        inset: 0;
+        z-index: 8000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(
+          ellipse 130% 120% at 50% 58%,
+          var(--p3) 0%,
+          var(--p1) 65%
+        );
+        transition:
+          opacity 1.5s ease,
+          transform 1.5s ease;
+      }
+      #lock.out {
+        opacity: 0;
+        transform: scale(1.08);
+        pointer-events: none;
+      }
+      .lr {
+        position: absolute;
+        border-radius: 50%;
+        border: 1px solid rgba(232, 184, 75, 0.06);
+        animation: lrP 5s ease-in-out infinite;
+        pointer-events: none;
+      }
+      .lr1 {
+        width: 380px;
+        height: 380px;
+      }
+      .lr2 {
+        width: 600px;
+        height: 600px;
+        animation-delay: 1s;
+      }
+      .lr3 {
+        width: 820px;
+        height: 820px;
+        animation-delay: 2s;
+      }
+      .lr4 {
+        width: 1040px;
+        height: 1040px;
+        animation-delay: 3s;
+      }
+      @keyframes lrP {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.5;
+        }
+        50% {
+          transform: scale(1.04);
+          opacity: 0.14;
+        }
+      }
+      .geo-bg {
+        position: absolute;
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(232, 184, 75, 0.06) 0%,
+          transparent 70%
+        );
+        animation: geoG 4.5s ease-in-out infinite;
+        pointer-events: none;
+      }
+      @keyframes geoG {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.5;
+        }
+        50% {
+          transform: scale(1.14);
+          opacity: 1;
+        }
+      }
+
+      .lcard {
+        position: relative;
+        z-index: 3;
+        background: linear-gradient(
+          145deg,
+          rgba(42, 16, 85, 0.76),
+          rgba(26, 8, 52, 0.83)
+        );
+        border: 1px solid rgba(232, 184, 75, 0.2);
+        border-radius: 24px;
+        padding: 44px 36px 38px;
+        max-width: 396px;
+        width: 93%;
+        text-align: center;
+        backdrop-filter: blur(22px);
+        box-shadow:
+          0 30px 80px rgba(0, 0, 0, 0.6),
+          0 0 0 1px rgba(232, 184, 75, 0.07),
+          0 0 80px rgba(66, 35, 122, 0.28),
+          inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        animation: lcIn 1s cubic-bezier(0.2, 0, 0.2, 1) both 0.2s;
+        overflow: hidden;
+      }
+      @keyframes lcIn {
+        from {
+          opacity: 0;
+          transform: translateY(30px) scale(0.93);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      .lcard::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1.5px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          var(--r2),
+          var(--gold),
+          transparent
+        );
+        animation: bGl 3.5s ease-in-out infinite;
+      }
+      @keyframes bGl {
+        0%,
+        100% {
+          opacity: 0.38;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+      .lc-em {
+        font-size: 48px;
+        display: block;
+        margin-bottom: 11px;
+        animation: emF 2.8s ease-in-out infinite;
+      }
+      @keyframes emF {
+        0%,
+        100% {
+          transform: translateY(0) rotate(-3deg);
+        }
+        50% {
+          transform: translateY(-10px) rotate(3deg);
+        }
+      }
+      .lc-title {
+        font-family: "Great Vibes", cursive;
+        font-size: clamp(30px, 7vw, 46px);
+        line-height: 1.2;
+        background: linear-gradient(
+          135deg,
+          var(--gold) 0%,
+          var(--g2) 35%,
+          var(--g3) 55%,
+          var(--g2) 75%,
+          var(--gold) 100%
+        );
+        background-size: 300% 300%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: shm 3s ease infinite;
+      }
+      .lc-dyn {
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        font-size: clamp(17px, 4vw, 24px);
+        background: linear-gradient(135deg, var(--rose), var(--r2), var(--r3));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        min-height: 34px;
+        display: block;
+        letter-spacing: 1px;
+        transition: all 0.35s;
+      }
+      .lc-quote {
+        font-style: italic;
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 12.5px;
+        letter-spacing: 0.4px;
+        margin: 7px 0 22px;
+        line-height: 1.65;
+      }
+      .inp-grp {
+        background: rgba(232, 184, 75, 0.05);
+        border: 1px solid rgba(232, 184, 75, 0.14);
+        border-radius: 11px;
+        padding: 11px 13px;
+        margin-bottom: 13px;
+        display: flex;
+        align-items: flex-start;
+        gap: 9px;
+        text-align: left;
+      }
+      .ig-ic {
+        font-size: 17px;
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
+      .ig-lb {
+        font-size: 11.5px;
+        color: rgba(232, 184, 75, 0.72);
+        letter-spacing: 0.3px;
+        line-height: 1.55;
+      }
+      .ig-lb small {
+        display: block;
+        color: rgba(255, 255, 255, 0.32);
+        font-size: 10px;
+        margin-top: 2px;
+      }
+      .linp {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.055);
+        border: 1.5px solid rgba(255, 255, 255, 0.1);
+        border-radius: 11px;
+        padding: 13px 16px;
+        color: var(--cr);
+        font-size: 18px;
+        font-family: "Great Vibes", cursive;
+        text-align: center;
+        outline: none;
+        transition:
+          border-color 0.35s,
+          box-shadow 0.35s;
+        margin-bottom: 13px;
+        letter-spacing: 1px;
+      }
+      .linp:focus {
+        border-color: var(--gold);
+        box-shadow: 0 0 0 3px rgba(232, 184, 75, 0.13);
+      }
+      .linp::placeholder {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 13px;
+        opacity: 0.38;
+        letter-spacing: 0.5px;
+      }
+      .ubtn {
+        width: 100%;
+        padding: 14px;
+        background: linear-gradient(
+          135deg,
+          #c0395f,
+          var(--rose),
+          var(--r2),
+          #f598b2
+        );
+        background-size: 300% 300%;
+        animation: shm 3s ease infinite;
+        border: none;
+        border-radius: 11px;
+        cursor: none;
+        color: #fff;
+        font-family: "Playfair Display", serif;
+        font-size: 13.5px;
+        font-weight: 700;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        transition:
+          transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.4s;
+        box-shadow: 0 10px 32px rgba(232, 80, 122, 0.4);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+      .ubtn::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -65%;
+        width: 32%;
+        height: 200%;
+        background: rgba(255, 255, 255, 0.2);
+        transform: skewX(-22deg);
+        transition: left 0.6s ease;
+      }
+      .ubtn:hover::after {
+        left: 115%;
+      }
+      .ubtn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 18px 44px rgba(232, 80, 122, 0.55);
+      }
+      .ubtn:active {
+        transform: scale(0.97);
+      }
+      .err {
+        margin-top: 11px;
+        color: var(--r2);
+        font-size: 12.5px;
+        font-style: italic;
+        opacity: 0;
+        transition: opacity 0.35s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+      }
+      .err.on {
+        opacity: 1;
+      }
+
+      /* LOADER */
+      #loader {
+        position: fixed;
+        inset: 0;
+        z-index: 7000;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(
+          ellipse 110% 100% at 50% 50%,
+          var(--p3) 0%,
+          var(--p1) 70%
+        );
+        transition: opacity 1.1s ease;
+      }
+      #loader.on {
+        display: flex;
+      }
+      #loader.out {
+        opacity: 0;
+        pointer-events: none;
+      }
+      #lhB {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+      }
+      .lh {
+        position: absolute;
+        animation: lhU linear infinite;
+        opacity: 0;
+      }
+      @keyframes lhU {
+        0% {
+          transform: translateY(110vh) scale(0.4) rotate(-18deg);
+          opacity: 0;
+        }
+        12% {
+          opacity: 0.9;
+        }
+        88% {
+          opacity: 0.65;
+        }
+        100% {
+          transform: translateY(-14vh) scale(1.3) rotate(22deg);
+          opacity: 0;
+        }
+      }
+      .ldH {
+        font-size: 56px;
+        animation: ldHB 1.3s ease-in-out infinite;
+        margin-bottom: 15px;
+      }
+      @keyframes ldHB {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.24);
+          filter: drop-shadow(0 0 16px rgba(232, 80, 122, 0.7));
+        }
+      }
+      .ldT {
+        font-family: "Great Vibes", cursive;
+        font-size: clamp(22px, 4.5vw, 30px);
+        color: var(--g2);
+        animation: ldP 1.6s ease-in-out infinite;
+      }
+      @keyframes ldP {
+        0%,
+        100% {
+          opacity: 0.6;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+      .ld-bw {
+        width: 200px;
+        height: 2px;
+        background: rgba(232, 184, 75, 0.1);
+        border-radius: 2px;
+        margin-top: 22px;
+        overflow: hidden;
+      }
+      .ld-bf {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, var(--rose), var(--gold));
+        animation: ldBa 2.2s ease forwards;
+      }
+      @keyframes ldBa {
+        0% {
+          width: 0%;
+        }
+        40% {
+          width: 45%;
+        }
+        70% {
+          width: 78%;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+
+      /* MAIN */
+      #main {
+        position: relative;
+        z-index: 10;
+        opacity: 0;
+        transform: translateY(14px);
+        transition:
+          opacity 1.6s ease 0.1s,
+          transform 1.6s ease 0.1s;
+      }
+      #main.on {
+        opacity: 1;
+        transform: none;
+      }
+
+      /* HERO */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 88px 22px 72px;
+        position: relative;
+        background: radial-gradient(
+          ellipse 110% 90% at 50% 40%,
+          var(--p4) 0%,
+          var(--p1) 68%
+        );
+        overflow: hidden;
+      }
+      .au {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        pointer-events: none;
+        animation: auM 12s ease-in-out infinite;
+      }
+      .a1 {
+        width: 500px;
+        height: 300px;
+        background: rgba(66, 35, 122, 0.35);
+        top: -12%;
+        left: -16%;
+        animation-delay: 0s;
+      }
+      .a2 {
+        width: 400px;
+        height: 400px;
+        background: rgba(232, 80, 122, 0.12);
+        top: 8%;
+        right: -12%;
+        animation-delay: -4s;
+      }
+      .a3 {
+        width: 600px;
+        height: 250px;
+        background: rgba(232, 184, 75, 0.08);
+        bottom: 4%;
+        left: 8%;
+        animation-delay: -8s;
+      }
+      @keyframes auM {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        33% {
+          transform: translate(30px, 20px) scale(1.05);
+        }
+        66% {
+          transform: translate(-20px, 30px) scale(0.95);
+        }
+      }
+      .crsvg {
+        position: absolute;
+        top: 65px;
+        right: 7%;
+        animation: floC 7s ease-in-out infinite;
+        z-index: 5;
+      }
+      @keyframes floC {
+        0%,
+        100% {
+          transform: translateY(0) rotate(-2.5deg);
+        }
+        50% {
+          transform: translateY(-18px) rotate(2.5deg);
+        }
+      }
+      .msq {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        opacity: 0.17;
+        pointer-events: none;
+      }
+      .hbadge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(232, 184, 75, 0.07);
+        border: 1px solid rgba(232, 184, 75, 0.17);
+        border-radius: 30px;
+        padding: 7px 20px;
+        font-size: 11px;
+        letter-spacing: 3.5px;
+        text-transform: uppercase;
+        color: var(--g2);
+        margin-bottom: 22px;
+        opacity: 0;
+        animation: rU 0.9s ease forwards 0.3s;
+        backdrop-filter: blur(8px);
+      }
+      .htit {
+        font-family: "Great Vibes", cursive;
+        font-size: clamp(52px, 12vw, 118px);
+        line-height: 1.05;
+        background: linear-gradient(
+          135deg,
+          var(--gold) 0%,
+          var(--g2) 28%,
+          var(--g3) 50%,
+          var(--g2) 72%,
+          var(--gold) 100%
+        );
+        background-size: 300% 300%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation:
+          shm 4s ease infinite,
+          rU 1.2s ease forwards 0.5s;
+        opacity: 0;
+        filter: drop-shadow(0 0 30px rgba(232, 184, 75, 0.3));
+        cursor: none;
+        transition: filter 0.4s;
+      }
+      .htit:hover {
+        filter: drop-shadow(0 0 60px rgba(232, 184, 75, 0.82));
+      }
+      .hto {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: clamp(16px, 3vw, 24px);
+        color: var(--r2);
+        margin: 5px 0 2px;
+        letter-spacing: 1px;
+        opacity: 0;
+        animation: rU 0.9s ease forwards 0.8s;
+      }
+      .hname {
+        font-family: "Playfair Display", serif;
+        font-weight: 900;
+        font-size: clamp(26px, 6vw, 56px);
+        letter-spacing: 2px;
+        background: linear-gradient(135deg, var(--rose), var(--r2), var(--r3));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        opacity: 0;
+        animation: rU 1s ease forwards 1s;
+        margin-bottom: 5px;
+        filter: drop-shadow(0 0 20px rgba(232, 80, 122, 0.3));
+        transition: filter 0.4s;
+        cursor: none;
+      }
+      .hname:hover {
+        filter: drop-shadow(0 0 40px rgba(232, 80, 122, 0.72));
+      }
+      .htag {
+        font-size: clamp(9.5px, 1.5vw, 12px);
+        letter-spacing: 3.5px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.36);
+        margin-bottom: 26px;
+        opacity: 0;
+        animation: rU 0.9s ease forwards 1.1s;
+      }
+      .hqw {
+        position: relative;
+        max-width: 560px;
+        padding: 20px 32px;
+        margin-bottom: 42px;
+        opacity: 0;
+        animation: rU 0.9s ease forwards 1.3s;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(8px);
+      }
+      .hq {
+        font-style: italic;
+        font-size: clamp(13.5px, 1.9vw, 16.5px);
+        color: rgba(255, 255, 255, 0.6);
+        line-height: 1.95;
+      }
+      .hqw::before {
+        content: "❝";
+        font-size: 40px;
+        color: var(--gold);
+        opacity: 0.4;
+        position: absolute;
+        top: -4px;
+        left: 10px;
+        line-height: 1;
+        font-style: normal;
+        font-family: "Amiri", serif;
+      }
+      .hqw::after {
+        content: "❞";
+        font-size: 40px;
+        color: var(--gold);
+        opacity: 0.4;
+        position: absolute;
+        bottom: -14px;
+        right: 10px;
+        line-height: 1;
+        font-style: normal;
+        font-family: "Amiri", serif;
+      }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 640px;
+        width: 95%;
+        gap: 1px;
+        background: rgba(232, 184, 75, 0.12);
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1px solid rgba(232, 184, 75, 0.16);
+        opacity: 0;
+        animation: rU 0.9s ease forwards 1.5s;
+      }
+      .stat {
+        background: rgba(14, 5, 30, 0.82);
+        padding: 20px 10px;
+        text-align: center;
+        transition: background 0.35s;
+        backdrop-filter: blur(8px);
+        position: relative;
+        overflow: hidden;
+      }
+      .stat::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(232, 184, 75, 0.05),
+          transparent
+        );
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .stat:hover::before {
+        opacity: 1;
+      }
+      .stat:hover {
+        background: rgba(22, 8, 46, 0.95);
+      }
+      .sn {
+        font-family: "Cinzel Decorative", serif;
+        font-size: clamp(18px, 3.8vw, 30px);
+        color: var(--g2);
+        display: block;
+        line-height: 1;
+        text-shadow: 0 0 16px rgba(232, 184, 75, 0.35);
+        transition: text-shadow 0.3s;
+      }
+      .stat:hover .sn {
+        text-shadow: 0 0 28px rgba(232, 184, 75, 0.72);
+      }
+      .sl {
+        font-size: 8px;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.35);
+        margin-top: 7px;
+        display: block;
+      }
+
+      /* SECTIONS */
+      .sec {
+        padding: 90px 20px;
+        position: relative;
+        overflow: hidden;
+      }
+      .se {
+        display: block;
+        font-size: 10px;
+        letter-spacing: 5.5px;
+        text-transform: uppercase;
+        color: var(--gold);
+        opacity: 0.55;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+      .st {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(20px, 4vw, 38px);
+        color: var(--g2);
+        letter-spacing: 0.5px;
+        text-align: center;
+      }
+      .sh {
+        text-align: center;
+        margin-bottom: 46px;
+      }
+
+      /* LETTER */
+      .lsec {
+        background: linear-gradient(
+          180deg,
+          var(--p1) 0%,
+          var(--p2) 35%,
+          var(--p3) 55%,
+          var(--p2) 78%,
+          var(--p1) 100%
+        );
+      }
+      .lcard2 {
+        max-width: 700px;
+        margin: 0 auto;
+        background: linear-gradient(
+          145deg,
+          rgba(42, 15, 85, 0.68),
+          rgba(28, 9, 55, 0.78)
+        );
+        border: 1px solid rgba(232, 184, 75, 0.16);
+        border-radius: 18px;
+        padding: 50px 44px;
+        position: relative;
+        backdrop-filter: blur(20px);
+        box-shadow: 0 20px 65px rgba(0, 0, 0, 0.45);
+        overflow: hidden;
+      }
+      .lcard2::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          var(--r2),
+          var(--gold),
+          transparent
+        );
+        animation: bGl 3.5s ease-in-out infinite;
+      }
+      .co {
+        position: absolute;
+        width: 44px;
+        height: 44px;
+        border-style: solid;
+        border-color: rgba(232, 184, 75, 0.36);
+      }
+      .co.tl {
+        top: 10px;
+        left: 10px;
+        border-width: 1.5px 0 0 1.5px;
+        border-radius: 6px 0 0 0;
+      }
+      .co.tr {
+        top: 10px;
+        right: 10px;
+        border-width: 1.5px 1.5px 0 0;
+        border-radius: 0 6px 0 0;
+      }
+      .co.bl {
+        bottom: 10px;
+        left: 10px;
+        border-width: 0 0 1.5px 1.5px;
+        border-radius: 0 0 0 6px;
+      }
+      .co.br {
+        bottom: 10px;
+        right: 10px;
+        border-width: 0 1.5px 1.5px 0;
+        border-radius: 0 0 6px 0;
+      }
+      .pb {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--rose), var(--r2));
+        box-shadow: 0 6px 22px rgba(232, 80, 122, 0.42);
+        font-size: 19px;
+        margin: 0 auto 8px;
+      }
+      .pl {
+        font-size: 9px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.28);
+        margin-bottom: 17px;
+        text-align: center;
+      }
+      .ldear {
+        font-family: "Great Vibes", cursive;
+        font-size: clamp(25px, 4.8vw, 37px);
+        color: var(--g2);
+        margin-bottom: 15px;
+      }
+      .ldear .dn {
+        -webkit-text-fill-color: transparent;
+        background: linear-gradient(135deg, var(--r2), var(--r3));
+        -webkit-background-clip: text;
+        background-clip: text;
+      }
+      .lp {
+        font-style: italic;
+        font-size: clamp(13.5px, 1.85vw, 16px);
+        color: rgba(255, 255, 255, 0.73);
+        line-height: 2;
+        margin-bottom: 12px;
+      }
+      .lp strong {
+        color: var(--g2);
+        font-style: normal;
+      }
+      .udiv {
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(232, 184, 75, 0.26),
+          transparent
+        );
+        margin: 24px 0;
+      }
+      .urdu {
+        direction: rtl;
+        text-align: right;
+        font-family: "Noto Nastaliq Urdu", serif;
+        font-size: clamp(19px, 3vw, 25px);
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 2.5;
+      }
+      .urdu .uh {
+        color: var(--g2);
+        font-weight: 600;
+      }
+      .len2 {
+        margin-top: 19px;
+        font-style: italic;
+        font-size: clamp(12.5px, 1.6vw, 14.5px);
+        color: rgba(255, 255, 255, 0.46);
+        line-height: 1.9;
+        text-align: center;
+      }
+
+      /* PROMISES */
+      .psec {
+        background: radial-gradient(
+          ellipse 95% 55% at 50% 50%,
+          var(--p4) 0%,
+          var(--p1) 72%
+        );
+      }
+      .pg {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(238px, 1fr));
+        gap: 15px;
+        max-width: 895px;
+        margin: 0 auto;
+      }
+      .pc {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(232, 184, 75, 0.12);
+        border-radius: 16px;
+        padding: 29px 21px;
+        text-align: center;
+        backdrop-filter: blur(12px);
+        opacity: 0;
+        transform: translateY(26px);
+        position: relative;
+        overflow: hidden;
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease,
+          box-shadow 0.4s,
+          border-color 0.3s;
+        cursor: none;
+        transform-style: preserve-3d;
+      }
+      .pc.vis {
+        opacity: 1;
+        transform: perspective(600px) rotateX(0) rotateY(0);
+      }
+      .pc::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent
+        );
+        opacity: 0;
+        transition: opacity 0.35s;
+      }
+      .pc:hover {
+        border-color: rgba(232, 184, 75, 0.3);
+        box-shadow: 0 18px 48px rgba(232, 184, 75, 0.1);
+      }
+      .pc:hover::before {
+        opacity: 1;
+      }
+      .gs {
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(232, 184, 75, 0.14) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s;
+        transform: translate(-50%, -50%);
+      }
+      .pc:hover .gs {
+        opacity: 1;
+      }
+      .piw {
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        background: linear-gradient(
+          135deg,
+          rgba(232, 184, 75, 0.1),
+          rgba(232, 93, 122, 0.08)
+        );
+        border: 1px solid rgba(232, 184, 75, 0.17);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 12px;
+        font-size: 23px;
+        transition:
+          transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.35s;
+      }
+      .pc:hover .piw {
+        transform: scale(1.12) rotate(-5deg);
+        box-shadow: 0 8px 24px rgba(232, 184, 75, 0.2);
+      }
+      .ptit {
+        font-family: "Playfair Display", serif;
+        font-size: 12.5px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--g2);
+        margin-bottom: 8px;
+      }
+      .pd {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.55);
+        line-height: 1.82;
+        font-style: italic;
+      }
+
+      /* POLAROIDS */
+      .msec {
+        background: var(--p1);
+      }
+      .pgrid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        max-width: 876px;
+        margin: 0 auto;
+      }
+      .pol {
+        background: #fff;
+        padding: 10px 10px 34px;
+        border-radius: 3px;
+        box-shadow:
+          0 14px 45px rgba(0, 0, 0, 0.55),
+          0 3px 10px rgba(0, 0, 0, 0.35);
+        opacity: 0;
+        position: relative;
+        cursor: none;
+        will-change: transform;
+        transition:
+          box-shadow 0.55s ease,
+          opacity 0.6s ease;
+      }
+      .pol:nth-child(1) {
+        transform: rotate(-3.5deg) translateY(20px);
+      }
+      .pol:nth-child(2) {
+        transform: rotate(2.5deg) translateY(22px);
+      }
+      .pol:nth-child(3) {
+        transform: rotate(-2deg) translateY(18px);
+      }
+      .pol:nth-child(4) {
+        transform: rotate(3deg) translateY(20px);
+      }
+      .pol:nth-child(5) {
+        transform: rotate(-1.5deg) translateY(16px);
+      }
+      .pol:nth-child(6) {
+        transform: rotate(2deg) translateY(20px);
+      }
+      .pol.vis:nth-child(1) {
+        opacity: 1;
+        transform: rotate(-3.5deg);
+      }
+      .pol.vis:nth-child(2) {
+        opacity: 1;
+        transform: rotate(2.5deg);
+      }
+      .pol.vis:nth-child(3) {
+        opacity: 1;
+        transform: rotate(-2deg);
+      }
+      .pol.vis:nth-child(4) {
+        opacity: 1;
+        transform: rotate(3deg);
+      }
+      .pol.vis:nth-child(5) {
+        opacity: 1;
+        transform: rotate(-1.5deg);
+      }
+      .pol.vis:nth-child(6) {
+        opacity: 1;
+        transform: rotate(2deg);
+      }
+      .pol:hover {
+        transform: rotate(0) scale(1.07) translateY(-8px) !important;
+        box-shadow:
+          0 28px 70px rgba(0, 0, 0, 0.6),
+          0 0 0 2.5px var(--gold) !important;
+        z-index: 10;
+      }
+      .pimg {
+        width: 100%;
+        aspect-ratio: 1;
+        overflow: hidden;
+        background: var(--p2);
+        border-radius: 1px;
+      }
+      .pimg svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .pcap {
+        font-family: "Great Vibes", cursive;
+        font-size: clamp(13px, 2.3vw, 17px);
+        color: #2a1050;
+        text-align: center;
+        margin-top: 7px;
+        line-height: 1.3;
+      }
+      .pol.spl {
+        background: linear-gradient(145deg, #2a1050, #3a1870);
+        border: 2px solid rgba(232, 184, 75, 0.4);
+      }
+      .pol.spl .pcap {
+        color: var(--g2);
+      }
+
+      /* FINAL */
+      .fsec {
+        padding: 90px 20px;
+        text-align: center;
+        background: radial-gradient(
+          ellipse 85% 65% at 50% 40%,
+          var(--p4) 0%,
+          var(--p1) 68%
+        );
+      }
+      .fic {
+        font-size: 22px;
+        letter-spacing: 8px;
+        margin-bottom: 14px;
+        display: block;
+      }
+      .fm {
+        font-family: "Great Vibes", cursive;
+        font-size: clamp(40px, 9.5vw, 92px);
+        background: linear-gradient(
+          135deg,
+          var(--gold) 0%,
+          var(--g2) 30%,
+          var(--g3) 52%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: shm 3.5s ease infinite;
+        filter: drop-shadow(0 0 24px rgba(232, 184, 75, 0.3));
+        line-height: 1.1;
+      }
+      .fab {
+        max-width: 600px;
+        margin: 26px auto;
+        background: rgba(232, 184, 75, 0.04);
+        border: 1px solid rgba(232, 184, 75, 0.15);
+        border-radius: 16px;
+        padding: 28px 30px;
+        position: relative;
+        backdrop-filter: blur(10px);
+      }
+      .fab::before {
+        content: "❝";
+        position: absolute;
+        top: 8px;
+        left: 14px;
+        font-size: 32px;
+        color: var(--gold);
+        opacity: 0.32;
+        font-family: "Amiri", serif;
+        line-height: 1;
+      }
+      .fab::after {
+        content: "❞";
+        position: absolute;
+        bottom: 4px;
+        right: 14px;
+        font-size: 32px;
+        color: var(--gold);
+        opacity: 0.32;
+        font-family: "Amiri", serif;
+        line-height: 1;
+      }
+      .far {
+        font-family: "Amiri", serif;
+        font-size: clamp(16px, 2.8vw, 22px);
+        color: var(--g2);
+        direction: rtl;
+        line-height: 2;
+        margin-bottom: 11px;
+      }
+      .fen {
+        font-style: italic;
+        font-size: clamp(12.5px, 1.6vw, 15px);
+        color: rgba(255, 255, 255, 0.56);
+        line-height: 1.88;
+      }
+      .fref {
+        font-size: 11px;
+        letter-spacing: 2px;
+        color: var(--gold);
+        opacity: 0.62;
+        margin-top: 8px;
+        display: block;
+      }
+      .fnames {
+        font-family: "Great Vibes", cursive;
+        font-size: clamp(30px, 6.5vw, 62px);
+        background: linear-gradient(135deg, var(--rose), var(--r2), var(--r3));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        filter: drop-shadow(0 0 18px rgba(232, 80, 122, 0.28));
+        margin: 18px 0 10px;
+      }
+      .fdua {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        background: rgba(232, 184, 75, 0.06);
+        border: 1px solid rgba(232, 184, 75, 0.17);
+        border-radius: 30px;
+        padding: 10px 24px;
+        font-family: "Amiri", serif;
+        font-size: clamp(13px, 2vw, 16.5px);
+        color: var(--g2);
+        margin-bottom: 24px;
+        backdrop-filter: blur(8px);
+      }
+      .fh {
+        display: inline-block;
+        font-size: 30px;
+        animation: fhb 1.6s ease-in-out infinite;
+      }
+      @keyframes fhb {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.32);
+          filter: drop-shadow(0 0 12px rgba(232, 80, 122, 0.65));
+        }
+      }
+
+      /* MUSIC BAR */
+      #mbar {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        z-index: 800;
+        background: rgba(20, 8, 40, 0.84);
+        border: 1px solid rgba(232, 184, 75, 0.2);
+        border-radius: 50px;
+        padding: 10px 17px;
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        backdrop-filter: blur(16px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+        cursor: none;
+        opacity: 0;
+        transition:
+          opacity 0.6s ease,
+          transform 0.4s ease;
+        transform: translateY(20px);
+      }
+      #mbar.on {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .mt {
+        background: linear-gradient(135deg, var(--rose), var(--gold));
+        border: none;
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: none;
+        font-size: 15px;
+        box-shadow: 0 4px 14px rgba(232, 184, 75, 0.3);
+        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .mt:hover {
+        transform: scale(1.15);
+      }
+      .ml {
+        font-size: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.42);
+      }
+      .viz {
+        display: flex;
+        align-items: flex-end;
+        gap: 2.5px;
+        height: 20px;
+      }
+      .vb {
+        width: 3px;
+        background: var(--g2);
+        border-radius: 2px;
+        animation: vbA 1s ease-in-out infinite;
+      }
+      .vb:nth-child(1) {
+        height: 8px;
+        animation-delay: 0s;
+      }
+      .vb:nth-child(2) {
+        height: 14px;
+        animation-delay: 0.15s;
+      }
+      .vb:nth-child(3) {
+        height: 20px;
+        animation-delay: 0.3s;
+      }
+      .vb:nth-child(4) {
+        height: 12px;
+        animation-delay: 0.45s;
+      }
+      .vb:nth-child(5) {
+        height: 18px;
+        animation-delay: 0.6s;
+      }
+      .viz.off .vb {
+        animation-play-state: paused;
+        transform: scaleY(0.3);
+      }
+      @keyframes vbA {
+        0%,
+        100% {
+          transform: scaleY(0.4);
+        }
+        50% {
+          transform: scaleY(1);
+        }
+      }
+
+      /* SPARKLE */
+      .spk {
+        position: fixed;
+        pointer-events: none;
+        z-index: 700;
+        animation: spkA 0.65s ease forwards;
+      }
+      @keyframes spkA {
+        0% {
+          opacity: 0;
+          transform: scale(0) rotate(0);
+        }
+        40% {
+          opacity: 1;
+          transform: scale(1.2) rotate(145deg);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(0.1) rotate(310deg) translateY(-24px);
+        }
+      }
+
+      /* REVEAL */
+      .rv {
+        opacity: 0;
+        transform: translateY(26px);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
+      }
+      .rv.vis {
+        opacity: 1;
+        transform: none;
+      }
+
+      /* KEYFRAMES */
+      @keyframes rU {
+        from {
+          opacity: 0;
+          transform: translateY(22px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      @keyframes shm {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      @keyframes shake {
+        0%,
+        100% {
+          transform: none;
+        }
+        20% {
+          transform: translateX(-8px);
+        }
+        40% {
+          transform: translateX(8px);
+        }
+        60% {
+          transform: translateX(-5px);
+        }
+        80% {
+          transform: translateX(5px);
+        }
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 680px) {
+        .pgrid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .stats {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .lcard2 {
+          padding: 34px 19px;
+        }
+        #mbar {
+          right: 12px;
+          bottom: 12px;
+        }
+      }
+      @media (max-width: 400px) {
+        .pg {
+          grid-template-columns: 1fr;
+        }
+        .pgrid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="cur"></div>
+    <div id="curR"></div>
+    <canvas id="bgC"></canvas><canvas id="fxC"></canvas>
+    <div id="spb"></div>
+    <div id="hbg"></div>
+    <div class="veil"></div>
+
+    <!-- ══ LOCK ══ -->
+    <div id="lock">
+      <div class="lr lr1"></div>
+      <div class="lr lr2"></div>
+      <div class="lr lr3"></div>
+      <div class="lr lr4"></div>
+      <div class="geo-bg"></div>
+      <div class="lcard">
+        <span class="lc-em">💛🤍</span>
+        <div class="lc-title">My Love</div>
+        <span class="lc-dyn" id="lcD">Enter Your Name...</span>
+        <p class="lc-quote">"In your eyes, I found my Eid every single day"</p>
+        <div class="inp-grp">
+          <span class="ig-ic">💝</span>
+          <div class="ig-lb">
+            Apna naam likho — yeh sirf tumhara ho jayega
+            <small>Jo naam likho ge, woh poori website mein aa jayega 💛</small>
+          </div>
+        </div>
+        <input
+          class="linp"
+          id="nInp"
+          type="text"
+          placeholder="Apna naam likho..."
+          autocomplete="off"
+          spellcheck="false"
+          maxlength="30"
+          oninput="onType(this.value)"
+          onkeydown="if (event.key === 'Enter') go();"
+        />
+        <button class="ubtn" onclick="go()">💛 &nbsp; Unlock Our Love</button>
+        <div class="err" id="err">💔 Pehle apna naam toh likho jaan...</div>
+      </div>
+    </div>
+
+    <!-- ══ LOADER ══ -->
+    <div id="loader">
+      <div id="lhB"></div>
+      <div class="ldH">💛</div>
+      <div class="ldT" id="ldT">Preparing Our Love Story...</div>
+      <div class="ld-bw"><div class="ld-bf"></div></div>
+    </div>
+
+    <!-- ══ MAIN ══ -->
+    <div id="main">
+      <div id="mbar">
+        <button class="mt" id="mb" onclick="toggleM()">♪</button>
+        <span class="ml" id="ml">Ambient</span>
+        <div class="viz" id="viz">
+          <div class="vb"></div>
+          <div class="vb"></div>
+          <div class="vb"></div>
+          <div class="vb"></div>
+          <div class="vb"></div>
+        </div>
+      </div>
+
+      <!-- HERO -->
+      <section class="hero">
+        <div class="au a1"></div>
+        <div class="au a2"></div>
+        <div class="au a3"></div>
+        <svg
+          class="crsvg"
+          width="100"
+          height="100"
+          viewBox="0 0 100 100"
+          fill="none"
+        >
+          <defs>
+            <radialGradient id="cg" cx="40%" cy="40%" r="60%">
+              <stop offset="0%" stop-color="#fff8cc" />
+              <stop offset="100%" stop-color="#e8b84b" />
+            </radialGradient>
+          </defs>
+          <circle
+            cx="50"
+            cy="50"
+            r="44"
+            fill="url(#cg)"
+            opacity=".95"
+            filter="url(#cf)"
+          />
+          <filter id="cf">
+            <feGaussianBlur stdDeviation="3" result="b" />
+            <feMerge>
+              <feMergeNode in="b" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+          <circle cx="64" cy="42" r="38" fill="#120828" />
+          <circle cx="82" cy="22" r="5" fill="#e8b84b" opacity=".9" />
+          <circle cx="90" cy="34" r="3" fill="#f5cb6a" opacity=".7" />
+          <circle cx="76" cy="12" r="2.2" fill="#fff0b0" opacity=".8" />
+        </svg>
+        <svg
+          class="msq"
+          viewBox="0 0 1400 90"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="rgba(232,184,75,.18)"
+          preserveAspectRatio="xMidYMax meet"
+        >
+          <path
+            d="M0,90L0,62L35,62L35,46L55,30L55,15Q63,0,72,15L72,30L92,46L92,62L127,62L127,90Z"
+          />
+          <path
+            d="M140,90L140,68L150,60Q154,44,158,32Q162,20,166,32Q170,44,174,60L174,68L184,90Z"
+          />
+          <path d="M200,90L200,62L208,40Q212,24,220,40L220,62L228,90Z" />
+          <path
+            d="M245,90L245,55L270,30L295,55L295,90ZM260,54L270,40L280,54Z"
+          />
+          <rect x="245" y="52" width="50" height="4" rx="2" />
+          <path
+            d="M315,90L315,62L348,62L348,46L366,30L366,14Q374,0,382,14L382,30L400,46L400,62L433,62L433,90Z"
+          />
+          <path
+            d="M448,90L448,55L474,33Q487,18,500,33L526,55L526,90ZM472,53L487,37L502,53Z"
+          />
+          <rect x="448" y="51" width="78" height="4" rx="2" />
+          <path d="M542,90L542,62L558,40Q562,24,570,40L570,62L586,90Z" />
+          <path
+            d="M600,90L600,62L636,62L636,46L654,30L654,14Q662,0,670,14L670,30L688,46L688,62L724,62L724,90Z"
+          />
+          <path
+            d="M738,90L738,68L747,60Q751,44,756,32Q761,20,765,32Q769,44,773,60L773,68L782,90Z"
+          />
+          <path
+            d="M796,90L796,55L822,33Q835,18,848,33L874,55L874,90ZM820,53L835,37L850,53Z"
+          />
+          <rect x="796" y="51" width="78" height="4" rx="2" />
+          <path
+            d="M890,90L890,62L926,62L926,46L944,30L944,14Q952,0,960,14L960,30L978,46L978,62L1014,62L1014,90Z"
+          />
+          <path d="M1028,90L1028,55L1053,30L1078,55L1078,90Z" />
+          <path d="M1092,90L1092,62L1108,40Q1112,24,1120,40L1120,62L1136,90Z" />
+          <path
+            d="M1210,90L1210,62L1246,62L1246,46L1264,30L1264,14Q1272,0,1280,14L1280,30L1298,46L1298,62L1334,62L1334,90Z"
+          />
+          <rect x="0" y="86" width="1400" height="4" />
+        </svg>
+        <div class="hbadge">🌙 &nbsp; Eid Mubarak My Love 🌙</div>
+        <h1 class="htit" id="htit">Eid Mubarak</h1>
+        <div class="hto">To My Soulmate</div>
+        <div class="hname dn" id="hname">Anas Rajput</div>
+        <div class="htag">The One Who Completes My Faith &amp; My Heart</div>
+        <div class="hqw">
+          <p class="hq">
+            This Eid is not just a celebration of the end of Ramadan, but a
+            celebration of having you in my life. You are the answered prayer I
+            never knew I was making.
+          </p>
+        </div>
+        <div class="stats">
+          <div class="stat">
+            <span class="sn" id="dN">∞</span
+            ><span class="sl">Days of Love</span>
+          </div>
+          <div class="stat">
+            <span class="sn">∞</span><span class="sl">Heartbeats</span>
+          </div>
+          <div class="stat">
+            <span class="sn">1</span><span class="sl">Eid Together</span>
+          </div>
+          <div class="stat">
+            <span class="sn">1</span><span class="sl">Soul United</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- LETTER -->
+      <section class="sec lsec">
+        <div class="sh rv">
+          <span class="se">From My Heart</span>
+          <div class="st">My Heart's Letter To You</div>
+        </div>
+        <div class="lcard2 rv">
+          <div class="co tl"></div>
+          <div class="co tr"></div>
+          <div class="co bl"></div>
+          <div class="co br"></div>
+          <div style="text-align: center">
+            <div class="pb">💌</div>
+            <div class="pl">Private &amp; Confidential</div>
+          </div>
+          <div class="ldear">
+            My Dearest, <span class="dn ldear-dn">Anas Rajput</span>
+          </div>
+          <p class="lp">
+            As the moon shines bright this Eid night,<br />I find myself lost in
+            your eyes so bright.<br />You are not just my partner, but my prayer
+            come true,<br />The blessing of Ramadan I never knew.
+          </p>
+          <p class="lp">
+            On this beautiful Eid morning, as I raise my hands in dua, your name
+            is the first word on my lips.
+            <strong class="dn">Anas Rajput</strong> — you are my favourite
+            person, my peace, my home, my answered prayer.
+          </p>
+          <p class="lp">
+            May Allah bless you endlessly, protect your beautiful smile, guide
+            your every step, and wrap you in His mercy always. You deserve every
+            happiness this world has to offer — and so much more.
+          </p>
+          <div class="udiv"></div>
+          <div class="urdu">
+            <p>تمہیں پتہ ہے ناں،</p>
+            <p>تمہاری آنکھیں کتنی پیاری ہیں؟</p>
+            <p>اور تمہاری آواز؟</p>
+            <p>تمہاری آواز مجھے بے حد پسند ہے —</p>
+            <p>تمہیں دیکھ کر، تمہاری مسکراہٹ کو دیکھ کر،</p>
+            <p>اور تمہاری آنکھوں کو دیکھ کر صدقے جانے کو جی چاہتا ہے۔</p>
+            <p class="uh" style="margin-top: 10px">
+              — عید مبارک <span class="dn">انس راجپوت</span> 💛
+            </p>
+          </div>
+          <div class="len2">
+            Every sehoor, I prayed for you. Every iftaar, I thanked Allah for
+            you.<br />You are the serenity in my chaos, the light that guides me
+            through.
+          </div>
+        </div>
+      </section>
+
+      <!-- PROMISES -->
+      <section class="sec psec">
+        <div class="sh rv">
+          <span class="se">My Vow To You</span>
+          <div class="st">My Promises to <span class="dn">Anas</span></div>
+        </div>
+        <div class="pg">
+          <div class="pc" data-pc>
+            <div class="gs"></div>
+            <div class="piw">🤲</div>
+            <div class="ptit">Lead with Faith</div>
+            <p class="pd">
+              I promise to lead our family with Islamic values, to pray
+              together, and to grow in deen side by side always.
+            </p>
+          </div>
+          <div class="pc" data-pc>
+            <div class="gs"></div>
+            <div class="piw">💛</div>
+            <div class="ptit">Cherish Every Moment</div>
+            <p class="pd">
+              I promise to never take your presence for granted, to appreciate
+              every smile, every tear we share together.
+            </p>
+          </div>
+          <div class="pc" data-pc>
+            <div class="gs"></div>
+            <div class="piw">🛡️</div>
+            <div class="ptit">Protect Your Heart</div>
+            <p class="pd">
+              I promise to be your safe haven, to shield you from harm, to be
+              your strength when you feel weak.
+            </p>
+          </div>
+          <div class="pc" data-pc>
+            <div class="gs"></div>
+            <div class="piw">🌹</div>
+            <div class="ptit">Romance Forever</div>
+            <p class="pd">
+              I promise to never let the flame die, to surprise you, to make you
+              feel like royalty every single day.
+            </p>
+          </div>
+          <div class="pc" data-pc>
+            <div class="gs"></div>
+            <div class="piw">🤝</div>
+            <div class="ptit">Stand By You Always</div>
+            <p class="pd">
+              In every trial, every triumph, every ordinary Tuesday — I promise
+              to be your constant companion.
+            </p>
+          </div>
+          <div class="pc" data-pc>
+            <div class="gs"></div>
+            <div class="piw">🌙</div>
+            <div class="ptit">Jannah Together</div>
+            <p class="pd">
+              My ultimate promise — to live this life so we may reunite in
+              Jannah, hand in hand, forever and ever.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- POLAROIDS -->
+      <section class="sec msec">
+        <div class="sh rv">
+          <span class="se">Our Story</span>
+          <div class="st">Our Precious Memories</div>
+        </div>
+        <div class="pgrid">
+          <div class="pol" data-pol>
+            <div class="pimg">
+              <svg viewBox="0 0 200 200">
+                <defs>
+                  <radialGradient id="g1" cx="50%" cy="30%" r="70%">
+                    <stop offset="0%" stop-color="#2a1050" />
+                    <stop offset="100%" stop-color="#0d0520" />
+                  </radialGradient>
+                </defs>
+                <rect width="200" height="200" fill="url(#g1)" />
+                <circle cx="15" cy="18" r="1.2" fill="white" opacity=".8" />
+                <circle cx="40" cy="10" r=".8" fill="white" opacity=".7" />
+                <circle cx="70" cy="22" r="1" fill="white" opacity=".6" />
+                <circle cx="105" cy="12" r=".9" fill="white" opacity=".9" />
+                <circle cx="148" cy="18" r="1.1" fill="white" opacity=".7" />
+                <circle cx="172" cy="8" r=".7" fill="white" opacity=".8" />
+                <circle cx="55" cy="35" r=".8" fill="white" opacity=".5" />
+                <circle cx="130" cy="28" r="1" fill="white" opacity=".7" />
+                <circle cx="185" cy="32" r=".9" fill="white" opacity=".6" />
+                <circle cx="155" cy="38" r="20" fill="#f5cb6a" opacity=".9" />
+                <circle cx="163" cy="30" r="17" fill="#1a0a35" />
+                <circle cx="180" cy="20" r="4" fill="#e8b84b" opacity=".8" />
+                <rect x="0" y="158" width="200" height="42" fill="#140840" />
+                <path
+                  d="M0,158 Q30,148 60,152 Q100,145 140,152 Q170,148 200,158L200,162L0,162Z"
+                  fill="#1e0d3c"
+                />
+                <circle cx="20" cy="155" r="4" fill="#e85d7a" opacity=".85" />
+                <circle cx="28" cy="152" r="3.5" fill="#f07898" opacity=".9" />
+                <circle cx="36" cy="156" r="3" fill="#e85d7a" opacity=".7" />
+                <ellipse cx="86" cy="118" rx="9" ry="9" fill="#42237a" />
+                <rect
+                  x="79"
+                  y="127"
+                  width="14"
+                  height="30"
+                  rx="5"
+                  fill="#42237a"
+                />
+                <rect x="80" y="128" width="2.5" height="20" fill="#9a7020" />
+                <ellipse cx="81" cy="150" rx="6" ry="7" fill="#9a7020" />
+                <ellipse cx="118" cy="116" rx="9" ry="9" fill="#7a3ab0" />
+                <path
+                  d="M109,116 Q118,106 127,116 Q124,109 118,107 Q112,109 109,116Z"
+                  fill="#2a0840"
+                />
+                <rect
+                  x="111"
+                  y="125"
+                  width="14"
+                  height="30"
+                  rx="5"
+                  fill="#7a3ab0"
+                />
+                <path
+                  d="M111,153 Q106,164 112,167 Q118,169 124,167 Q130,164 125,153Z"
+                  fill="#7a3ab0"
+                />
+                <line
+                  x1="93"
+                  y1="150"
+                  x2="111"
+                  y2="150"
+                  stroke="#e8b84b"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                />
+                <text x="94" y="104" font-size="11" fill="#e85d7a" opacity=".9">
+                  ♥
+                </text>
+              </svg>
+            </div>
+            <div class="pcap">Our First Hello 🌙</div>
+          </div>
+
+          <div class="pol spl" data-pol>
+            <div class="pimg">
+              <svg viewBox="0 0 200 200">
+                <defs>
+                  <radialGradient id="g2" cx="50%" cy="50%" r="60%">
+                    <stop offset="0%" stop-color="#3d1878" />
+                    <stop offset="100%" stop-color="#0d0520" />
+                  </radialGradient>
+                  <radialGradient id="g2b" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#e8b84b" stop-opacity=".35" />
+                    <stop
+                      offset="100%"
+                      stop-color="transparent"
+                      stop-opacity="0"
+                    />
+                  </radialGradient>
+                </defs>
+                <rect width="200" height="200" fill="url(#g2)" />
+                <circle cx="100" cy="85" r="75" fill="url(#g2b)" />
+                <rect
+                  x="35"
+                  y="138"
+                  width="130"
+                  height="52"
+                  rx="5"
+                  fill="#52239e"
+                  opacity=".55"
+                />
+                <rect
+                  x="39"
+                  y="142"
+                  width="122"
+                  height="44"
+                  rx="4"
+                  fill="none"
+                  stroke="#e8b84b"
+                  stroke-width="1"
+                  opacity=".45"
+                />
+                <path
+                  d="M60,155 Q100,140 140,155 Q140,148 100,142 Q60,148 60,155Z"
+                  fill="none"
+                  stroke="#e8b84b"
+                  stroke-width=".8"
+                  opacity=".4"
+                />
+                <ellipse cx="74" cy="110" rx="9" ry="9" fill="#42237a" />
+                <path
+                  d="M63,102 Q60,91 66,86 Q70,84 74,86 Q78,84 82,86 Q88,91 85,102"
+                  fill="#42237a"
+                  opacity=".85"
+                />
+                <rect
+                  x="60"
+                  y="138"
+                  width="28"
+                  height="13"
+                  rx="4"
+                  fill="#42237a"
+                />
+                <ellipse cx="126" cy="108" rx="9" ry="9" fill="#7a3ab0" />
+                <path
+                  d="M117,108 Q126,98 135,108 Q135,101 126,98 Q117,101 117,108Z"
+                  fill="#2a0840"
+                />
+                <path
+                  d="M117,108 Q112,96 118,88 Q122,86 126,88 Q130,86 134,88 Q140,93 137,102"
+                  fill="#7a3ab0"
+                  opacity=".85"
+                />
+                <rect
+                  x="112"
+                  y="138"
+                  width="28"
+                  height="13"
+                  rx="4"
+                  fill="#7a3ab0"
+                />
+                <path
+                  d="M85,70 L100,90 L115,70"
+                  fill="none"
+                  stroke="rgba(232,184,75,.25)"
+                  stroke-width="12"
+                />
+                <ellipse
+                  cx="100"
+                  cy="68"
+                  rx="15"
+                  ry="10"
+                  fill="rgba(232,184,75,.18)"
+                />
+                <circle cx="22" cy="22" r="1.1" fill="white" opacity=".7" />
+                <circle cx="178" cy="24" r=".9" fill="white" opacity=".6" />
+              </svg>
+            </div>
+            <div class="pcap">Praying Together 🤲</div>
+          </div>
+
+          <div class="pol" data-pol>
+            <div class="pimg">
+              <svg viewBox="0 0 200 200">
+                <defs>
+                  <radialGradient id="g3" cx="50%" cy="0%" r="80%">
+                    <stop offset="0%" stop-color="#1a0a35" />
+                    <stop offset="100%" stop-color="#060112" />
+                  </radialGradient>
+                </defs>
+                <rect width="200" height="200" fill="url(#g3)" />
+                <path
+                  d="M0,55 Q100,38 200,65"
+                  stroke="rgba(255,255,255,.07)"
+                  stroke-width="22"
+                  fill="none"
+                />
+                <circle cx="12" cy="12" r="1.2" fill="white" opacity=".9" />
+                <circle cx="32" cy="6" r=".9" fill="white" opacity=".7" />
+                <circle cx="58" cy="18" r="1.1" fill="white" opacity=".8" />
+                <circle cx="82" cy="8" r=".8" fill="white" opacity=".65" />
+                <circle cx="108" cy="16" r="1.3" fill="white" opacity=".9" />
+                <circle cx="138" cy="6" r=".7" fill="white" opacity=".7" />
+                <circle cx="162" cy="14" r="1" fill="white" opacity=".8" />
+                <circle cx="183" cy="4" r="1.2" fill="white" opacity=".7" />
+                <circle cx="22" cy="32" r=".8" fill="white" opacity=".6" />
+                <circle cx="52" cy="40" r="1" fill="white" opacity=".7" />
+                <circle cx="128" cy="28" r=".9" fill="white" opacity=".8" />
+                <line
+                  x1="45"
+                  y1="22"
+                  x2="78"
+                  y2="38"
+                  stroke="white"
+                  stroke-width=".8"
+                  opacity=".45"
+                />
+                <path
+                  d="M0,175 Q50,155 100,160 Q150,155 200,175L200,200L0,200Z"
+                  fill="#130828"
+                />
+                <rect
+                  x="50"
+                  y="152"
+                  width="100"
+                  height="28"
+                  rx="9"
+                  fill="#2a1050"
+                />
+                <path
+                  d="M62,152 Q72,136 90,133 Q110,130 130,136 Q140,142 140,152Z"
+                  fill="#3d1878"
+                />
+                <rect
+                  x="68"
+                  y="138"
+                  width="24"
+                  height="13"
+                  rx="3"
+                  fill="#060520"
+                  opacity=".85"
+                />
+                <rect
+                  x="97"
+                  y="137"
+                  width="28"
+                  height="14"
+                  rx="3"
+                  fill="#060520"
+                  opacity=".85"
+                />
+                <circle cx="70" cy="178" r="11" fill="#0d0520" />
+                <circle cx="70" cy="178" r="7" fill="#2a1050" />
+                <circle cx="130" cy="178" r="11" fill="#0d0520" />
+                <circle cx="130" cy="178" r="7" fill="#2a1050" />
+                <path
+                  d="M150,157 L185,146 L185,166 L150,164Z"
+                  fill="rgba(232,184,75,.1)"
+                />
+                <ellipse cx="85" cy="146" rx="7" ry="7" fill="#42237a" />
+                <ellipse cx="108" cy="144" rx="7" ry="7" fill="#7a3ab0" />
+                <path
+                  d="M101,144 Q108,136 115,144 Q115,138 108,135 Q101,138 101,144Z"
+                  fill="#2a0840"
+                />
+                <text
+                  x="90"
+                  y="130"
+                  font-size="10"
+                  fill="#e85d7a"
+                  opacity=".85"
+                >
+                  ♥
+                </text>
+              </svg>
+            </div>
+            <div class="pcap">Stargazing 🌟</div>
+          </div>
+
+          <div class="pol" data-pol>
+            <div class="pimg">
+              <svg viewBox="0 0 200 200">
+                <defs>
+                  <radialGradient id="g4" cx="50%" cy="30%" r="70%">
+                    <stop offset="0%" stop-color="#3d1050" />
+                    <stop offset="100%" stop-color="#0d0520" />
+                  </radialGradient>
+                </defs>
+                <rect width="200" height="200" fill="url(#g4)" />
+                <rect
+                  x="62"
+                  y="18"
+                  width="76"
+                  height="90"
+                  rx="6"
+                  fill="#0a0318"
+                />
+                <rect x="64" y="20" width="35" height="85" fill="#1a0a35" />
+                <rect x="101" y="20" width="35" height="85" fill="#1a0a35" />
+                <line
+                  x1="99"
+                  y1="20"
+                  x2="99"
+                  y2="105"
+                  stroke="#2a1050"
+                  stroke-width="2"
+                />
+                <line
+                  x1="62"
+                  y1="62"
+                  x2="138"
+                  y2="62"
+                  stroke="#2a1050"
+                  stroke-width="2"
+                />
+                <circle cx="118" cy="44" r="11" fill="#e8b84b" opacity=".85" />
+                <circle cx="124" cy="39" r="9" fill="#0a0318" />
+                <rect
+                  x="28"
+                  y="148"
+                  width="144"
+                  height="9"
+                  rx="3"
+                  fill="#3d1878"
+                />
+                <rect x="44" y="157" width="8" height="38" fill="#2a1050" />
+                <rect x="148" y="157" width="8" height="38" fill="#2a1050" />
+                <ellipse
+                  cx="100"
+                  cy="148"
+                  rx="38"
+                  ry="7"
+                  fill="#42239e"
+                  opacity=".5"
+                />
+                <circle cx="76" cy="143" r="9" fill="#8a2818" opacity=".95" />
+                <circle cx="100" cy="140" r="11" fill="#b86820" opacity=".9" />
+                <ellipse
+                  cx="126"
+                  cy="143"
+                  rx="11"
+                  ry="7"
+                  fill="#1a5842"
+                  opacity=".95"
+                />
+                <ellipse cx="65" cy="112" rx="9" ry="9" fill="#42237a" />
+                <rect
+                  x="57"
+                  y="121"
+                  width="16"
+                  height="30"
+                  rx="4"
+                  fill="#42237a"
+                />
+                <ellipse cx="135" cy="110" rx="9" ry="9" fill="#7a3ab0" />
+                <path
+                  d="M126,110 Q135,100 144,110 Q144,103 135,100 Q126,103 126,110Z"
+                  fill="#2a0840"
+                />
+                <rect
+                  x="127"
+                  y="119"
+                  width="16"
+                  height="30"
+                  rx="4"
+                  fill="#7a3ab0"
+                />
+                <rect x="97" y="122" width="5" height="22" fill="#c8a040" />
+                <ellipse
+                  cx="100"
+                  cy="120"
+                  rx="7"
+                  ry="9"
+                  fill="rgba(232,184,75,.38)"
+                />
+                <circle cx="100" cy="122" r="3.5" fill="#ffe080" />
+                <circle cx="18" cy="22" r="1" fill="white" opacity=".7" />
+              </svg>
+            </div>
+            <div class="pcap">Ramadan Iftaar 🌙</div>
+          </div>
+
+          <div class="pol spl" data-pol>
+            <div
+              class="pimg"
+              style="
+                background: linear-gradient(145deg, #2a1050, #3d1878);
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <svg
+                style="
+                  position: absolute;
+                  inset: 0;
+                  width: 100%;
+                  height: 100%;
+                  opacity: 0.4;
+                "
+                viewBox="0 0 200 200"
+              >
+                <defs>
+                  <radialGradient id="g5r" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#e8b84b" stop-opacity=".3" />
+                    <stop offset="100%" stop-color="transparent" />
+                  </radialGradient>
+                </defs>
+                <rect width="200" height="200" fill="url(#g5r)" />
+                <circle
+                  cx="100"
+                  cy="100"
+                  r="85"
+                  fill="none"
+                  stroke="rgba(232,184,75,.14)"
+                  stroke-width="1"
+                />
+                <circle
+                  cx="100"
+                  cy="100"
+                  r="64"
+                  fill="none"
+                  stroke="rgba(232,184,75,.09)"
+                  stroke-width="1"
+                />
+                <path
+                  d="M8,8L30,8L30,10L10,10L10,30L8,30Z"
+                  fill="rgba(232,184,75,.45)"
+                />
+                <path
+                  d="M192,8L170,8L170,10L190,10L190,30L192,30Z"
+                  fill="rgba(232,184,75,.45)"
+                />
+                <path
+                  d="M8,192L30,192L30,190L10,190L10,170L8,170Z"
+                  fill="rgba(232,184,75,.45)"
+                />
+                <path
+                  d="M192,192L170,192L170,190L190,190L190,170L192,170Z"
+                  fill="rgba(232,184,75,.45)"
+                />
+                <text x="28" y="52" font-size="15" fill="#e8b84b" opacity=".6">
+                  ✦
+                </text>
+                <text x="152" y="46" font-size="11" fill="#e8b84b" opacity=".5">
+                  ✦
+                </text>
+              </svg>
+              <div
+                style="
+                  position: relative;
+                  z-index: 1;
+                  text-align: center;
+                  padding: 16px;
+                "
+              >
+                <div
+                  style="
+                    font-family: &quot;Great Vibes&quot;, cursive;
+                    font-size: clamp(20px, 5vw, 27px);
+                    color: #e8b84b;
+                    line-height: 1.3;
+                    text-shadow: 0 0 22px rgba(232, 184, 75, 0.55);
+                  "
+                >
+                  Our First Eid
+                </div>
+                <div
+                  style="
+                    font-family: &quot;Cormorant Garamond&quot;, serif;
+                    font-style: italic;
+                    font-size: clamp(11px, 1.8vw, 13px);
+                    color: rgba(255, 255, 255, 0.65);
+                    margin-top: 9px;
+                    line-height: 1.7;
+                    padding: 0 4px;
+                  "
+                >
+                  Creating this for you —<br />because every day with you<br />is
+                  Eid for me.
+                </div>
+                <div style="margin-top: 10px; font-size: 18px">💛🌙💛</div>
+              </div>
+            </div>
+            <div class="pcap" style="color: #e8b84b">Our First Eid ✦</div>
+          </div>
+
+          <div class="pol" data-pol>
+            <div class="pimg">
+              <svg viewBox="0 0 200 200">
+                <defs>
+                  <radialGradient id="g6" cx="50%" cy="40%" r="70%">
+                    <stop offset="0%" stop-color="#1a4030" />
+                    <stop offset="100%" stop-color="#0a1810" />
+                  </radialGradient>
+                </defs>
+                <rect width="200" height="200" fill="url(#g6)" />
+                <circle cx="158" cy="32" r="26" fill="#fffbe0" opacity=".92" />
+                <circle cx="169" cy="24" r="22" fill="#1a4030" />
+                <ellipse cx="28" cy="88" rx="24" ry="42" fill="#0a2818" />
+                <rect x="24" y="125" width="8" height="42" fill="#0a1810" />
+                <ellipse cx="172" cy="82" rx="22" ry="38" fill="#0a2818" />
+                <rect x="168" y="118" width="8" height="44" fill="#0a1810" />
+                <ellipse cx="52" cy="102" rx="17" ry="28" fill="#0f3020" />
+                <rect x="48" y="128" width="8" height="36" fill="#0a1810" />
+                <ellipse cx="152" cy="98" rx="15" ry="25" fill="#0f3020" />
+                <rect x="148" y="120" width="8" height="34" fill="#0a1810" />
+                <path
+                  d="M55,200 Q78,172 100,158 Q122,172 145,200"
+                  fill="rgba(255,252,200,.07)"
+                />
+                <circle cx="65" cy="178" r="5.5" fill="#e85d7a" opacity=".85" />
+                <circle cx="72" cy="172" r="4" fill="#f07898" opacity=".75" />
+                <circle cx="132" cy="175" r="4.5" fill="#e8b84b" opacity=".8" />
+                <circle cx="126" cy="170" r="3.5" fill="#f5cb6a" opacity=".7" />
+                <ellipse cx="86" cy="130" rx="8.5" ry="8.5" fill="#1a6040" />
+                <rect
+                  x="79"
+                  y="138"
+                  width="14"
+                  height="30"
+                  rx="4"
+                  fill="#1a6040"
+                />
+                <ellipse cx="112" cy="128" rx="8.5" ry="8.5" fill="#2a8060" />
+                <path
+                  d="M103,128 Q112,118 121,128 Q121,121 112,118 Q103,121 103,128Z"
+                  fill="#0a2818"
+                />
+                <rect
+                  x="104"
+                  y="136"
+                  width="14"
+                  height="30"
+                  rx="4"
+                  fill="#2a8060"
+                />
+                <line
+                  x1="93"
+                  y1="155"
+                  x2="104"
+                  y2="155"
+                  stroke="#e8b84b"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                />
+                <text x="88" y="112" font-size="10" fill="#e85d7a" opacity=".8">
+                  ♥
+                </text>
+              </svg>
+            </div>
+            <div class="pcap">Evening Walks 🌿</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL -->
+      <section class="fsec">
+        <span class="fic rv">💛 🌙 💛</span>
+        <div class="fm rv">Eid Mubarak My Everything</div>
+        <div class="fab rv">
+          <div class="far">
+            وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا
+            لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً
+          </div>
+          <p class="fen">
+            "And among His signs is that He created for you from yourselves
+            mates that you may find tranquility in them; and He placed between
+            you affection and mercy."
+          </p>
+          <span class="fref">— Ar-Rum (30:21)</span>
+        </div>
+        <div class="fnames rv dn">Anas Rajput</div>
+        <div class="fdua rv">
+          🌙 May Allah bless you, strengthen your faith, and keep you in His
+          mercy always 🌙
+        </div>
+        <div class="fh rv">💛</div>
+      </section>
+    </div>
+    <!-- /main -->
+
+    <script>
+      "use strict";
+      let uName = "Anas Rajput",
+        mDone = false,
+        musicOn = false;
+
+      /* ─ NAME SYSTEM ─ */
+      function onType(v) {
+        const t = v.trim();
+        const d = document.getElementById("lcD");
+        d.textContent = t.length > 0 ? t : "Enter Your Name...";
+        d.style.opacity = t.length > 0 ? "1" : ".4";
+        document.getElementById("err").classList.remove("on");
+      }
+      function setNames(name) {
+        uName = name;
+        // Update all .dn elements
+        document.querySelectorAll(".dn").forEach((el) => {
+          // Keep short version for some
+          if (el.classList.contains("ldear-dn")) el.textContent = name;
+          else el.textContent = name;
+        });
+        document.getElementById("hname").textContent = name;
+        document.getElementById("lcD").textContent = name;
+        const lt = document.getElementById("ldT");
+        if (lt) lt.textContent = `Preparing Your Story, ${name}...`;
+      }
+      function go() {
+        const v = document.getElementById("nInp").value.trim();
+        if (v.length < 2) {
+          document.getElementById("err").classList.add("on");
+          const i = document.getElementById("nInp");
+          i.style.animation = "shake .45s ease";
+          setTimeout(() => (i.style.animation = ""), 500);
+          return;
+        }
+        setNames(v);
+        showLoader();
+      }
+
+      /* ─ CURSOR ─ */
+      const cur = document.getElementById("cur"),
+        curR = document.getElementById("curR");
+      let mx = innerWidth / 2,
+        my = innerHeight / 2,
+        rx = mx,
+        ry = my;
+      document.addEventListener(
+        "mousemove",
+        (e) => {
+          mx = e.clientX;
+          my = e.clientY;
+          cur.style.left = mx + "px";
+          cur.style.top = my + "px";
+          if (mDone) spawnTrail(mx, my);
+        },
+        { passive: true },
+      );
+      (function tc() {
+        rx += (mx - rx) * 0.1;
+        ry += (my - ry) * 0.1;
+        curR.style.left = rx + "px";
+        curR.style.top = ry + "px";
+        requestAnimationFrame(tc);
+      })();
+      let ltT = 0;
+      const TE = ["💛", "✦", "🌙", "💫", "❤️", "✨", "🌸"];
+      function spawnTrail(x, y) {
+        const n = Date.now();
+        if (n - ltT < 85) return;
+        ltT = n;
+        if (Math.random() > 0.5) return;
+        const t = document.createElement("div");
+        t.className = "trail";
+        t.textContent = TE[Math.floor(Math.random() * TE.length)];
+        t.style.left = x + "px";
+        t.style.top = y + "px";
+        t.style.fontSize = 9 + Math.random() * 8 + "px";
+        document.body.appendChild(t);
+        setTimeout(() => t.remove(), 700);
+      }
+
+      /* ─ CANVAS ─ */
+      const bgC = document.getElementById("bgC"),
+        bgX = bgC.getContext("2d");
+      const fxC = document.getElementById("fxC"),
+        fxX = fxC.getContext("2d");
+      function rsz() {
+        bgC.width = fxC.width = innerWidth;
+        bgC.height = fxC.height = innerHeight;
+      }
+      rsz();
+      addEventListener("resize", rsz, { passive: true });
+      let STARS = [];
+      function bldS() {
+        STARS = Array.from({ length: 200 }, (_, i) => ({
+          x: (i * 137.5 + 50) % bgC.width,
+          y: (i * 97.3 + 50) % bgC.height,
+          r: Math.random() * 0.9 + 0.2,
+          ph: Math.random() * Math.PI * 2,
+        }));
+      }
+      bldS();
+      addEventListener("resize", bldS, { passive: true });
+      function drawBg(t) {
+        bgX.clearRect(0, 0, bgC.width, bgC.height);
+        const g = bgX.createRadialGradient(
+          bgC.width / 2,
+          bgC.height * 0.38,
+          0,
+          bgC.width / 2,
+          bgC.height * 0.38,
+          bgC.width * 0.9,
+        );
+        g.addColorStop(0, "#2a1055");
+        g.addColorStop(0.5, "#1a0a35");
+        g.addColorStop(1, "#0d0520");
+        bgX.fillStyle = g;
+        bgX.fillRect(0, 0, bgC.width, bgC.height);
+        STARS.forEach((s) => {
+          const tw = 0.3 + Math.sin(t * 0.0007 + s.ph) * 0.25;
+          bgX.globalAlpha = tw;
+          bgX.fillStyle = "#fff";
+          bgX.beginPath();
+          bgX.arc(s.x, s.y, s.r, 0, 6.283);
+          bgX.fill();
+        });
+        bgX.globalAlpha = 1;
+      }
+      const CONF = [],
+        CC = [
+          "#e8b84b",
+          "#f5cb6a",
+          "#fff0b0",
+          "#e8507a",
+          "#f07898",
+          "#ffc4d8",
+          "#ffffff",
+        ];
+      class Cf {
+        constructor() {
+          this.x = Math.random() * fxC.width;
+          this.y = -12;
+          this.w = Math.random() * 9 + 3;
+          this.h = Math.random() * 5 + 2;
+          this.c = CC[Math.floor(Math.random() * CC.length)];
+          this.rot = Math.random() * 360;
+          this.rs = (Math.random() - 0.5) * 7;
+          this.vx = (Math.random() - 0.5) * 2.8;
+          this.vy = Math.random() * 2.8 + 1.8;
+          this.life = 1;
+        }
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+          this.rot += this.rs;
+          this.vy += 0.038;
+          if (this.y > fxC.height) this.life = 0;
+        }
+        draw() {
+          fxX.save();
+          fxX.globalAlpha = this.life;
+          fxX.translate(this.x, this.y);
+          fxX.rotate(this.rot * 0.01745);
+          fxX.fillStyle = this.c;
+          fxX.fillRect(-this.w / 2, -this.h / 2, this.w, this.h);
+          fxX.restore();
+        }
+      }
+      const FWS = [];
+      class FW {
+        constructor(x, y) {
+          this.x = x || Math.random() * bgC.width;
+          this.y = y || Math.random() * bgC.height * 0.5;
+          const c = CC[Math.floor(Math.random() * CC.length)];
+          const n = 44 + Math.floor(Math.random() * 28);
+          this.ps = Array.from({ length: n }, (_, i) => {
+            const a = (i / n) * 6.283,
+              sp = Math.random() * 3.8 + 1.3;
+            return {
+              x: this.x,
+              y: this.y,
+              vx: Math.cos(a) * sp,
+              vy: Math.sin(a) * sp,
+              life: 1,
+              dec: 0.012 + Math.random() * 0.009,
+              sz: 1.8 + Math.random() * 2,
+              c,
+            };
+          });
+        }
+        update() {
+          this.ps.forEach((p) => {
+            p.x += p.vx;
+            p.y += p.vy;
+            p.vy += 0.05;
+            p.vx *= 0.987;
+            p.vy *= 0.987;
+            p.life -= p.dec;
+          });
+          this.ps = this.ps.filter((p) => p.life > 0);
+        }
+        draw() {
+          const m = new Map();
+          this.ps.forEach((p) => {
+            if (!m.has(p.c)) m.set(p.c, []);
+            m.get(p.c).push(p);
+          });
+          m.forEach((pts, col) => {
+            bgX.fillStyle = col;
+            pts.forEach((p) => {
+              bgX.globalAlpha = p.life * 0.72;
+              bgX.beginPath();
+              bgX.arc(p.x, p.y, p.sz * p.life, 0, 6.283);
+              bgX.fill();
+            });
+          });
+          bgX.globalAlpha = 1;
+        }
+        dead() {
+          return !this.ps.length;
+        }
+      }
+      let lastFW = 0;
+      (function loop(t) {
+        drawBg(t);
+        for (let i = FWS.length - 1; i >= 0; i--) {
+          FWS[i].update();
+          FWS[i].draw();
+          if (FWS[i].dead()) FWS.splice(i, 1);
+        }
+        fxX.clearRect(0, 0, fxC.width, fxC.height);
+        for (let i = CONF.length - 1; i >= 0; i--) {
+          CONF[i].update();
+          CONF[i].draw();
+          if (!CONF[i].life) CONF.splice(i, 1);
+        }
+        if (mDone && t - lastFW > 4500) {
+          FWS.push(new FW());
+          lastFW = t;
+        }
+        requestAnimationFrame(loop);
+      })(0);
+
+      /* ─ HEARTS BG ─ */
+      const hBox = document.getElementById("hbg");
+      const HE = ["💛", "🤍", "💫", "✨", "🌸", "💕", "🌙", "❤️", "🌹", "✦"];
+      function spH() {
+        const h = document.createElement("div");
+        h.className = "hb";
+        h.textContent = HE[Math.floor(Math.random() * HE.length)];
+        const sz = 11 + Math.random() * 14;
+        h.style.cssText = `left:${Math.random() * 100}%;font-size:${sz}px;animation-duration:${11 + Math.random() * 16}s;animation-delay:${-Math.random() * 7}s;`;
+        hBox.appendChild(h);
+        setTimeout(() => h.remove(), 30000);
+      }
+      for (let i = 0; i < 12; i++) spH();
+      setInterval(spH, 1800);
+
+      /* ─ 3D TILT on promise cards ─ */
+      document.querySelectorAll(".pc").forEach((card) => {
+        card.addEventListener(
+          "mousemove",
+          (e) => {
+            const r = card.getBoundingClientRect();
+            const x = (e.clientX - r.left) / r.width - 0.5;
+            const y = (e.clientY - r.top) / r.height - 0.5;
+            card.style.transform = `perspective(500px) rotateX(${-y * 10}deg) rotateY(${x * 10}deg)`;
+            const gs = card.querySelector(".gs");
+            if (gs) {
+              gs.style.left = e.clientX - r.left + "px";
+              gs.style.top = e.clientY - r.top + "px";
+            }
+          },
+          { passive: true },
+        );
+        card.addEventListener("mouseleave", () => {
+          card.style.transform = card.classList.contains("vis")
+            ? "none"
+            : "translateY(26px)";
+        });
+      });
+
+      /* ─ SPARKLE ─ */
+      function spk(x, y, rose) {
+        const s = document.createElement("div");
+        s.className = "spk";
+        s.textContent = ["✦", "★", "✧", "💫", "✸", "❋", "💛", "🌙"][
+          Math.floor(Math.random() * 8)
+        ];
+        s.style.cssText = `left:${x + (Math.random() - 0.5) * 38}px;top:${y + (Math.random() - 0.5) * 38}px;font-size:${9 + Math.random() * 12}px;color:${rose ? "#ffc4d8" : "#f5cb6a"};`;
+        document.body.appendChild(s);
+        setTimeout(() => s.remove(), 650);
+      }
+      const ht = document.getElementById("htit");
+      if (ht)
+        ht.addEventListener(
+          "mousemove",
+          (e) => {
+            if (Math.random() > 0.58) spk(e.clientX, e.clientY);
+          },
+          { passive: true },
+        );
+      const hdn = document.getElementById("hname");
+      if (hdn)
+        hdn.addEventListener(
+          "mousemove",
+          (e) => {
+            if (Math.random() > 0.55) spk(e.clientX, e.clientY, true);
+          },
+          { passive: true },
+        );
+      document.addEventListener(
+        "click",
+        (e) => {
+          if (!mDone) return;
+          if (e.target.closest(".ubtn,.mt,.pol")) return;
+          FWS.push(new FW(e.clientX, e.clientY));
+          spk(e.clientX, e.clientY);
+        },
+        { passive: true },
+      );
+
+      /* ─ SCROLL PROGRESS ─ */
+      const spb = document.getElementById("spb");
+      addEventListener(
+        "scroll",
+        () => {
+          const st = scrollY,
+            dh = document.body.scrollHeight - innerHeight;
+          spb.style.width = (dh > 0 ? (st / dh) * 100 : 0) + "%";
+        },
+        { passive: true },
+      );
+
+      /* ─ SCROLL REVEAL ─ */
+      const io = new IntersectionObserver(
+        (es) => {
+          es.forEach((e) => {
+            if (!e.isIntersecting) return;
+            const el = e.target;
+            if ("pc" in el.dataset) {
+              const k = [...el.parentNode.children];
+              setTimeout(() => el.classList.add("vis"), k.indexOf(el) * 120);
+              io.unobserve(el);
+            }
+            if ("pol" in el.dataset) {
+              const k = [...el.parentNode.children];
+              setTimeout(() => el.classList.add("vis"), k.indexOf(el) * 110);
+              io.unobserve(el);
+            }
+            if (el.classList.contains("rv")) {
+              el.classList.add("vis");
+              io.unobserve(el);
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+      document
+        .querySelectorAll("[data-pc],[data-pol],.rv")
+        .forEach((el) => io.observe(el));
+
+      /* ─ LOADER ─ */
+      function showLoader() {
+        document.getElementById("lock").classList.add("out");
+        setTimeout(
+          () => (document.getElementById("lock").style.display = "none"),
+          1500,
+        );
+        const ld = document.getElementById("loader");
+        ld.classList.add("on");
+        const lb = document.getElementById("lhB");
+        for (let i = 0; i < 24; i++) {
+          const h = document.createElement("div");
+          h.className = "lh";
+          h.textContent = HE[Math.floor(Math.random() * HE.length)];
+          const sz = 16 + Math.random() * 24;
+          h.style.cssText = `left:${Math.random() * 100}%;font-size:${sz}px;animation-duration:${3 + Math.random() * 4}s;animation-delay:${-Math.random() * 3}s;`;
+          lb.appendChild(h);
+        }
+        setTimeout(revealMain, 2700);
+      }
+      function revealMain() {
+        document.getElementById("loader").classList.add("out");
+        setTimeout(
+          () => (document.getElementById("loader").style.display = "none"),
+          1200,
+        );
+        document.getElementById("main").classList.add("on");
+        mDone = true;
+        setTimeout(
+          () => document.getElementById("mbar").classList.add("on"),
+          1000,
+        );
+        for (let i = 0; i < 12; i++)
+          setTimeout(
+            () =>
+              FWS.push(
+                new FW(
+                  bgC.width * (0.08 + Math.random() * 0.84),
+                  bgC.height * (0.04 + Math.random() * 0.5),
+                ),
+              ),
+            i * 120,
+          );
+        for (let i = 0; i < 240; i++)
+          setTimeout(() => CONF.push(new Cf()), i * 7);
+        setTimeout(startMusic, 900);
+      }
+
+      /* ─ DAYS ─ */
+      const diff = Math.floor((new Date() - new Date(2024, 2, 15)) / 864e5);
+      const dn = document.getElementById("dN");
+      if (dn) dn.textContent = diff > 0 ? diff.toLocaleString() : "∞";
+
+      /* ─ MUSIC ─ */
+      let aC = null,
+        gn = null,
+        oA = [];
+      function startMusic() {
+        if (musicOn) return;
+        try {
+          aC = new (window.AudioContext || window.webkitAudioContext)();
+          if (aC.state === "suspended") aC.resume();
+          gn = aC.createGain();
+          gn.gain.setValueAtTime(0, aC.currentTime);
+          gn.gain.linearRampToValueAtTime(0.05, aC.currentTime + 2.5);
+          gn.connect(aC.destination);
+          musicOn = true;
+          upMUI(true);
+          [
+            [261.63, 0.018],
+            [329.63, 0.014],
+            [392, 0.011],
+            [523.25, 0.009],
+            [659.25, 0.006],
+          ].forEach(([f, g]) => {
+            const o = aC.createOscillator(),
+              og = aC.createGain(),
+              lfo = aC.createOscillator(),
+              lg = aC.createGain();
+            o.type = "sine";
+            o.frequency.value = f;
+            og.gain.value = g;
+            lfo.frequency.value = 0.28 + Math.random() * 0.2;
+            lfo.type = "sine";
+            lg.gain.value = 0.65;
+            lfo.connect(lg);
+            lg.connect(o.frequency);
+            lfo.start();
+            o.connect(og);
+            og.connect(gn);
+            o.start();
+            oA.push(o, lfo);
+          });
+          const mel = [
+            523.25, 587.33, 659.25, 698.46, 587.33, 523.25, 440, 392, 440,
+            523.25, 587.33, 523.25, 493.88, 440, 392, 349.23, 392, 440,
+          ];
+          let t = aC.currentTime + 2;
+          function note(i) {
+            if (!musicOn) return;
+            const o = aC.createOscillator(),
+              og = aC.createGain();
+            o.type = "triangle";
+            o.frequency.value = mel[i];
+            og.gain.setValueAtTime(0, t);
+            og.gain.linearRampToValueAtTime(0.025, t + 0.08);
+            og.gain.linearRampToValueAtTime(0, t + 0.78);
+            o.connect(og);
+            og.connect(gn);
+            o.start(t);
+            o.stop(t + 0.9);
+            t += 0.92;
+            setTimeout(() => note((i + 1) % mel.length), 920);
+          }
+          setTimeout(() => {
+            if (musicOn) note(0);
+          }, 2000);
+        } catch (e) {
+          console.warn(e);
+        }
+      }
+      function stopMusic() {
+        if (!musicOn) return;
+        if (gn) {
+          gn.gain.linearRampToValueAtTime(0, aC.currentTime + 1.8);
+          setTimeout(() => {
+            oA.forEach((o) => {
+              try {
+                o.stop();
+              } catch (e) {}
+            });
+            oA = [];
+            if (aC) {
+              aC.close();
+              aC = null;
+            }
+          }, 2000);
+        }
+        musicOn = false;
+        upMUI(false);
+      }
+      function toggleM() {
+        if (musicOn) stopMusic();
+        else startMusic();
+      }
+      function upMUI(on) {
+        document.getElementById("mb").textContent = on ? "♫" : "♪";
+        document.getElementById("ml").textContent = on ? "Playing" : "Ambient";
+        document.getElementById("viz").classList.toggle("off", !on);
+      }
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" && !mDone) go();
+      });
+    </script>
+  </body>
+</html>

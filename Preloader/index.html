@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Preloader</title>
+    <style>
+      :root {
+        --c-accent: #9b59ff;
+        --c-accent2: #ff59f8;
+        --c-muted: #888;
+        --transition: cubic-bezier(0.4, 0, 0.2, 1);
+        --font-display: "Arial Black", sans-serif;
+        --font-mono: "Courier New", monospace;
+      }
+
+      body {
+        margin: 0;
+        background: #020408;
+        color: white;
+        font-family: sans-serif;
+      }
+
+      #preloader {
+        position: fixed;
+        inset: 0;
+        background: #020408;
+        z-index: 99999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition:
+          opacity 0.8s var(--transition),
+          visibility 0.8s;
+      }
+
+      #preloader.done {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .preloader-logo {
+        font-family: var(--font-display);
+        font-size: clamp(2.5rem, 8vw, 5rem);
+        font-weight: 900;
+        letter-spacing: 0.2em;
+        background: linear-gradient(135deg, var(--c-accent), var(--c-accent2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: preloaderPulse 1.5s ease-in-out infinite;
+      }
+
+      .preloader-bar-wrap {
+        width: 200px;
+        height: 3px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        margin-top: 32px;
+        overflow: hidden;
+      }
+
+      .preloader-bar {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, var(--c-accent), var(--c-accent2));
+        border-radius: 10px;
+        animation: preloaderBar 2s var(--transition) forwards;
+      }
+
+      .preloader-text {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        letter-spacing: 0.3em;
+        color: var(--c-muted);
+        margin-top: 20px;
+        text-transform: uppercase;
+        animation: fadeInUp 0.5s ease 0.3s both;
+      }
+
+      @keyframes preloaderPulse {
+        0%,
+        100% {
+          transform: scale(1);
+          filter: brightness(1);
+        }
+        50% {
+          transform: scale(1.05);
+          filter: brightness(1.3);
+        }
+      }
+
+      @keyframes preloaderBar {
+        0% {
+          width: 0;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(15px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="preloader">
+      <div class="preloader-logo">ANAS</div>
+      <div class="preloader-bar-wrap">
+        <div class="preloader-bar"></div>
+      </div>
+      <div class="preloader-text">Initializing Experience...</div>
+    </div>
+
+    <div style="padding: 100px; text-align: center">
+      <h1>Welcome to The Page</h1>
+    </div>
+
+    <script>
+      window.addEventListener("load", () => {
+        const preloader = document.querySelector("#preloader");
+
+        setTimeout(() => {
+          preloader.classList.add("done");
+          document.body.style.overflow = "auto";
+
+          if (typeof initReveal === "function") {
+            initReveal();
+          }
+        }, 2200);
+      });
+
+      document.body.style.overflow = "hidden";
+    </script>
+  </body>
+</html>

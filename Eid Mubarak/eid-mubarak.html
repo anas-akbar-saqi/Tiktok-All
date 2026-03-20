@@ -1,0 +1,1919 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eid Mubarak — Celebration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ===== CSS VARIABLES ===== */
+      :root {
+        --gold: #d4af37;
+        --gold-light: #f5d06b;
+        --gold-pale: #fff0a0;
+        --gold-dark: #8b6914;
+        --emerald: #0a2718;
+        --emerald-mid: #0d3320;
+        --emerald-bright: #1a5c36;
+        --black: #030a06;
+        --white: #fdf8ee;
+        --glow-gold: rgba(212, 175, 55, 0.6);
+        --glow-green: rgba(26, 92, 54, 0.4);
+      }
+
+      /* ===== RESET & BASE ===== */
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+
+      body {
+        font-family: "Cormorant Garamond", serif;
+        background: var(--black);
+        color: var(--white);
+        min-height: 100vh;
+        overflow-x: hidden;
+        cursor: none;
+      }
+
+      /* ===== CUSTOM CURSOR ===== */
+      .cursor {
+        width: 12px;
+        height: 12px;
+        background: var(--gold);
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 99999;
+        transition:
+          transform 0.15s ease,
+          opacity 0.15s ease;
+        box-shadow:
+          0 0 15px var(--glow-gold),
+          0 0 30px var(--glow-gold);
+        transform: translate(-50%, -50%);
+      }
+      .cursor-ring {
+        width: 36px;
+        height: 36px;
+        border: 1px solid rgba(212, 175, 55, 0.5);
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 99998;
+        transition:
+          transform 0.4s ease,
+          opacity 0.3s ease;
+        transform: translate(-50%, -50%);
+      }
+
+      /* ===== CANVAS LAYER ===== */
+      #bgCanvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        pointer-events: none;
+      }
+      #confettiCanvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 50;
+        pointer-events: none;
+      }
+
+      /* ===== SCROLLABLE CONTENT ===== */
+      .page-wrapper {
+        position: relative;
+        z-index: 10;
+      }
+
+      /* ===== GEOMETRIC PATTERN OVERLAY ===== */
+      .geo-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+        pointer-events: none;
+        opacity: 0.03;
+        background-image:
+          repeating-linear-gradient(
+            45deg,
+            var(--gold) 0,
+            var(--gold) 1px,
+            transparent 0,
+            transparent 50%
+          ),
+          repeating-linear-gradient(
+            -45deg,
+            var(--gold) 0,
+            var(--gold) 1px,
+            transparent 0,
+            transparent 50%
+          );
+        background-size: 60px 60px;
+      }
+
+      /* ===== GRADIENT VEIL ===== */
+      .veil {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 2;
+        pointer-events: none;
+        background:
+          radial-gradient(
+            ellipse 80% 60% at 50% 0%,
+            rgba(10, 39, 24, 0.9) 0%,
+            transparent 70%
+          ),
+          radial-gradient(
+            ellipse 60% 40% at 50% 100%,
+            rgba(3, 10, 6, 0.95) 0%,
+            transparent 60%
+          );
+      }
+
+      /* ===== NAVIGATION BAR ===== */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 48px;
+        background: linear-gradient(
+          to bottom,
+          rgba(3, 10, 6, 0.9) 0%,
+          transparent 100%
+        );
+        backdrop-filter: blur(2px);
+      }
+      .nav-logo {
+        font-family: "Amiri", serif;
+        font-size: 18px;
+        color: var(--gold);
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        opacity: 0.8;
+      }
+      .nav-links {
+        display: flex;
+        gap: 36px;
+        list-style: none;
+      }
+      .nav-links a {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 13px;
+        color: rgba(253, 248, 238, 0.6);
+        text-decoration: none;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        transition: color 0.3s;
+      }
+      .nav-links a:hover {
+        color: var(--gold);
+      }
+
+      /* ===== MUSIC TOGGLE ===== */
+      .music-btn {
+        background: rgba(212, 175, 55, 0.1);
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        color: var(--gold);
+        padding: 8px 20px;
+        border-radius: 40px;
+        font-size: 12px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        cursor: none;
+        transition: all 0.3s ease;
+        font-family: "Cormorant Garamond", serif;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .music-btn:hover {
+        background: rgba(212, 175, 55, 0.2);
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+      }
+      .music-icon {
+        font-size: 14px;
+      }
+
+      /* ===== HERO SECTION ===== */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 120px 24px 80px;
+        position: relative;
+      }
+
+      /* Crescent Moon */
+      .crescent-wrap {
+        position: absolute;
+        top: 80px;
+        right: 8%;
+        animation: float 6s ease-in-out infinite;
+        z-index: 5;
+      }
+      .crescent {
+        width: 80px;
+        height: 80px;
+        position: relative;
+      }
+      .crescent::before {
+        content: "";
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: var(--gold-light);
+        box-shadow:
+          0 0 40px rgba(212, 175, 55, 0.8),
+          0 0 80px rgba(212, 175, 55, 0.4);
+      }
+      .crescent::after {
+        content: "";
+        position: absolute;
+        width: 65px;
+        height: 65px;
+        border-radius: 50%;
+        background: var(--emerald);
+        top: -5px;
+        left: 18px;
+      }
+      .crescent-star {
+        position: absolute;
+        top: -15px;
+        right: -20px;
+        font-size: 20px;
+        color: var(--gold-light);
+        filter: drop-shadow(0 0 10px var(--gold));
+        animation: twinkle 2s ease-in-out infinite;
+      }
+
+      /* Bismillah Arabic */
+      .bismillah {
+        font-family: "Amiri", serif;
+        font-size: clamp(18px, 3vw, 28px);
+        color: var(--gold);
+        opacity: 0;
+        letter-spacing: 4px;
+        margin-bottom: 24px;
+        animation: fadeSlideUp 1s ease forwards 0.3s;
+        text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+      }
+
+      /* Ornament divider */
+      .ornament {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 20px;
+        opacity: 0;
+        animation: fadeSlideUp 1s ease forwards 0.5s;
+      }
+      .ornament-line {
+        width: 80px;
+        height: 1px;
+        background: linear-gradient(to right, transparent, var(--gold));
+      }
+      .ornament-line.right {
+        background: linear-gradient(to left, transparent, var(--gold));
+      }
+      .ornament-diamond {
+        width: 8px;
+        height: 8px;
+        background: var(--gold);
+        transform: rotate(45deg);
+        box-shadow: 0 0 10px var(--gold);
+      }
+
+      /* Main Title */
+      .hero-title {
+        font-family: "Cinzel Decorative", serif;
+        font-size: clamp(52px, 12vw, 140px);
+        font-weight: 900;
+        background: linear-gradient(
+          135deg,
+          #8b6914 0%,
+          #d4af37 25%,
+          #f5d06b 50%,
+          #d4af37 75%,
+          #8b6914 100%
+        );
+        background-size: 300% 300%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        line-height: 1.1;
+        opacity: 0;
+        animation:
+          fadeSlideUp 1.2s ease forwards 0.7s,
+          shimmer 4s ease infinite 2s;
+        filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.4));
+        position: relative;
+        cursor: none;
+        letter-spacing: -2px;
+      }
+      .hero-title:hover {
+        filter: drop-shadow(0 0 60px rgba(212, 175, 55, 0.9));
+      }
+
+      .hero-subtitle-ar {
+        font-family: "Amiri", serif;
+        font-size: clamp(20px, 4vw, 36px);
+        color: var(--gold-light);
+        opacity: 0;
+        margin-top: 12px;
+        animation: fadeSlideUp 1s ease forwards 1s;
+        letter-spacing: 2px;
+        text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+      }
+
+      .hero-subtitle {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(16px, 2.5vw, 24px);
+        font-style: italic;
+        color: rgba(253, 248, 238, 0.75);
+        max-width: 620px;
+        line-height: 1.8;
+        margin-top: 24px;
+        opacity: 0;
+        animation: fadeSlideUp 1s ease forwards 1.2s;
+        letter-spacing: 0.5px;
+      }
+
+      /* Celebrate Button */
+      .celebrate-btn {
+        margin-top: 48px;
+        padding: 18px 52px;
+        background: linear-gradient(
+          135deg,
+          #8b6914,
+          #d4af37,
+          #f5d06b,
+          #d4af37,
+          #8b6914
+        );
+        background-size: 300% 300%;
+        border: none;
+        border-radius: 60px;
+        font-family: "Cinzel Decorative", serif;
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--black);
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        cursor: none;
+        position: relative;
+        overflow: hidden;
+        opacity: 0;
+        animation:
+          fadeSlideUp 1s ease forwards 1.5s,
+          shimmer 3s ease infinite 2s;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+        box-shadow: 0 8px 40px rgba(212, 175, 55, 0.4);
+      }
+      .celebrate-btn::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -60%;
+        width: 40%;
+        height: 200%;
+        background: rgba(255, 255, 255, 0.25);
+        transform: skewX(-20deg);
+        transition: left 0.6s ease;
+      }
+      .celebrate-btn:hover::before {
+        left: 120%;
+      }
+      .celebrate-btn:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 16px 60px rgba(212, 175, 55, 0.6);
+      }
+      .celebrate-btn:active {
+        transform: translateY(0) scale(0.99);
+      }
+
+      /* Scroll Indicator */
+      .scroll-indicator {
+        position: absolute;
+        bottom: 36px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        opacity: 0;
+        animation: fadeIn 1s ease forwards 2.5s;
+      }
+      .scroll-text {
+        font-size: 10px;
+        letter-spacing: 4px;
+        color: rgba(212, 175, 55, 0.5);
+        text-transform: uppercase;
+      }
+      .scroll-line {
+        width: 1px;
+        height: 50px;
+        background: linear-gradient(to bottom, var(--gold), transparent);
+        animation: scrollPulse 2s ease-in-out infinite;
+      }
+
+      /* ===== LANTERNS ===== */
+      .lanterns-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        pointer-events: none;
+        z-index: 3;
+        overflow: hidden;
+      }
+      .lantern {
+        position: absolute;
+        top: -20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        animation: lanternSway 5s ease-in-out infinite;
+        transform-origin: top center;
+      }
+      .lantern:nth-child(1) {
+        left: 5%;
+        animation-delay: 0s;
+        animation-duration: 5.5s;
+      }
+      .lantern:nth-child(2) {
+        left: 18%;
+        animation-delay: -1.5s;
+        animation-duration: 6s;
+      }
+      .lantern:nth-child(3) {
+        right: 5%;
+        animation-delay: -0.5s;
+        animation-duration: 5s;
+      }
+      .lantern:nth-child(4) {
+        right: 18%;
+        animation-delay: -2s;
+        animation-duration: 6.5s;
+      }
+
+      .lantern-string {
+        width: 1px;
+        height: 60px;
+        background: linear-gradient(
+          to bottom,
+          rgba(212, 175, 55, 0.4),
+          rgba(212, 175, 55, 0.2)
+        );
+      }
+      .lantern-body {
+        width: 30px;
+        height: 50px;
+        background: linear-gradient(135deg, #d4af37, #8b6914, #d4af37);
+        border-radius: 4px 4px 8px 8px;
+        position: relative;
+        box-shadow:
+          0 0 20px rgba(212, 175, 55, 0.6),
+          0 0 40px rgba(212, 175, 55, 0.3),
+          inset 0 0 15px rgba(255, 240, 100, 0.3);
+        overflow: hidden;
+      }
+      .lantern-body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 25%;
+        width: 50%;
+        height: 100%;
+        background: rgba(255, 255, 200, 0.15);
+      }
+      .lantern-top {
+        width: 36px;
+        height: 8px;
+        background: var(--gold);
+        border-radius: 2px;
+        box-shadow: 0 0 10px var(--gold);
+      }
+      .lantern-bottom {
+        width: 20px;
+        height: 14px;
+        background: var(--gold);
+        clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+        box-shadow: 0 5px 15px rgba(212, 175, 55, 0.5);
+      }
+      .lantern-glow {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(212, 175, 55, 0.3) 0%,
+          transparent 70%
+        );
+        animation: lanternPulse 2s ease-in-out infinite;
+      }
+
+      /* ===== SECTION COMMON ===== */
+      section {
+        position: relative;
+        z-index: 10;
+        padding: 100px 48px;
+      }
+      .section-title-wrap {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+      .section-eyebrow {
+        font-size: 11px;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: var(--gold);
+        opacity: 0.7;
+        margin-bottom: 16px;
+        display: block;
+      }
+      .section-title {
+        font-family: "Cinzel Decorative", serif;
+        font-size: clamp(28px, 5vw, 52px);
+        background: linear-gradient(
+          135deg,
+          var(--gold-dark),
+          var(--gold),
+          var(--gold-light)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        line-height: 1.2;
+      }
+
+      /* ===== MOSQUE SILHOUETTE ===== */
+      .mosque-row {
+        position: relative;
+        z-index: 4;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 0;
+        height: 120px;
+        overflow: hidden;
+        margin-top: -20px;
+        opacity: 0.18;
+        pointer-events: none;
+      }
+      .mosque-svg {
+        fill: var(--gold);
+        height: 100%;
+      }
+
+      /* ===== DUA SECTION ===== */
+      .dua-section {
+        background: linear-gradient(
+          180deg,
+          var(--black) 0%,
+          var(--emerald) 30%,
+          var(--emerald-mid) 60%,
+          var(--black) 100%
+        );
+        padding: 120px 24px;
+      }
+      .dua-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 28px;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .dua-card {
+        background: rgba(212, 175, 55, 0.04);
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        border-radius: 16px;
+        padding: 40px 32px;
+        position: relative;
+        overflow: hidden;
+        transition:
+          transform 0.4s ease,
+          box-shadow 0.4s ease;
+        backdrop-filter: blur(10px);
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      .dua-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease,
+          box-shadow 0.4s ease;
+      }
+      .dua-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent
+        );
+        animation: borderGlow 3s ease-in-out infinite;
+      }
+      .dua-card::after {
+        content: "";
+        position: absolute;
+        bottom: -40px;
+        right: -40px;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(212, 175, 55, 0.08) 0%,
+          transparent 70%
+        );
+      }
+      .dua-card:hover {
+        transform: translateY(-6px);
+        box-shadow:
+          0 20px 60px rgba(212, 175, 55, 0.15),
+          0 0 0 1px rgba(212, 175, 55, 0.3);
+      }
+      .dua-arabic {
+        font-family: "Amiri", serif;
+        font-size: 22px;
+        color: var(--gold-light);
+        text-align: center;
+        margin-bottom: 16px;
+        line-height: 1.6;
+        text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+      }
+      .dua-english {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 16px;
+        font-style: italic;
+        color: rgba(253, 248, 238, 0.75);
+        line-height: 1.8;
+        text-align: center;
+      }
+      .dua-icon {
+        font-size: 28px;
+        text-align: center;
+        display: block;
+        margin-bottom: 20px;
+        filter: drop-shadow(0 0 8px var(--gold));
+      }
+
+      /* ===== GREETING CARD SECTION ===== */
+      .card-section {
+        background: var(--black);
+        padding: 120px 24px;
+      }
+      .greeting-card {
+        max-width: 780px;
+        margin: 0 auto;
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        opacity: 0;
+        transform: scale(0.95) translateY(30px);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
+      }
+      .greeting-card.visible {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+      .greeting-card-inner {
+        background: linear-gradient(
+          145deg,
+          rgba(10, 39, 24, 0.95) 0%,
+          rgba(13, 51, 32, 0.95) 50%,
+          rgba(10, 39, 24, 0.95) 100%
+        );
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        border-radius: 20px;
+        padding: 64px 56px;
+        position: relative;
+        backdrop-filter: blur(20px);
+      }
+      /* Corner ornaments */
+      .corner {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border-color: var(--gold);
+        border-style: solid;
+        opacity: 0.5;
+      }
+      .corner.tl {
+        top: 12px;
+        left: 12px;
+        border-width: 2px 0 0 2px;
+        border-radius: 6px 0 0 0;
+      }
+      .corner.tr {
+        top: 12px;
+        right: 12px;
+        border-width: 2px 2px 0 0;
+        border-radius: 0 6px 0 0;
+      }
+      .corner.bl {
+        bottom: 12px;
+        left: 12px;
+        border-width: 0 0 2px 2px;
+        border-radius: 0 0 0 6px;
+      }
+      .corner.br {
+        bottom: 12px;
+        right: 12px;
+        border-width: 0 2px 2px 0;
+        border-radius: 0 0 6px 0;
+      }
+
+      .card-glow {
+        position: absolute;
+        inset: -2px;
+        border-radius: 22px;
+        background: transparent;
+        border: 2px solid transparent;
+        background-clip: padding-box;
+        animation: cardGlowAnim 4s linear infinite;
+        z-index: -1;
+      }
+      .greeting-card::before {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        border-radius: 21px;
+        padding: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent,
+          var(--gold),
+          transparent
+        );
+        background-size: 400% 100%;
+        -webkit-mask:
+          linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        animation: borderRotate 4s linear infinite;
+      }
+
+      .card-header {
+        text-align: center;
+        margin-bottom: 36px;
+      }
+      .card-eyebrow {
+        font-size: 10px;
+        letter-spacing: 6px;
+        text-transform: uppercase;
+        color: var(--gold);
+        opacity: 0.6;
+        margin-bottom: 12px;
+        display: block;
+      }
+      .card-main-title {
+        font-family: "Cinzel Decorative", serif;
+        font-size: clamp(24px, 5vw, 44px);
+        background: linear-gradient(
+          135deg,
+          var(--gold-dark),
+          var(--gold),
+          var(--gold-light),
+          var(--gold)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 8px;
+      }
+      .card-divider {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 24px 0;
+        justify-content: center;
+      }
+      .card-divider-line {
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          rgba(212, 175, 55, 0.5)
+        );
+      }
+      .card-divider-line.right {
+        background: linear-gradient(
+          to left,
+          transparent,
+          rgba(212, 175, 55, 0.5)
+        );
+      }
+      .card-divider-gem {
+        color: var(--gold);
+        font-size: 16px;
+      }
+
+      .card-message {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(16px, 2vw, 20px);
+        line-height: 2;
+        color: rgba(253, 248, 238, 0.85);
+        text-align: center;
+        font-style: italic;
+      }
+      .card-signature {
+        text-align: center;
+        margin-top: 32px;
+      }
+      .card-sign-text {
+        font-family: "Amiri", serif;
+        font-size: 14px;
+        color: var(--gold);
+        letter-spacing: 4px;
+        opacity: 0.7;
+      }
+
+      /* ===== STATS / BLESSINGS ROW ===== */
+      .blessings-section {
+        padding: 80px 24px;
+        background: var(--emerald);
+      }
+      .blessings-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1px;
+        max-width: 900px;
+        margin: 0 auto;
+        background: rgba(212, 175, 55, 0.1);
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid rgba(212, 175, 55, 0.15);
+      }
+      .blessing-item {
+        background: rgba(10, 39, 24, 0.8);
+        padding: 48px 32px;
+        text-align: center;
+        backdrop-filter: blur(10px);
+        transition: background 0.3s ease;
+      }
+      .blessing-item:hover {
+        background: rgba(10, 39, 24, 0.95);
+      }
+      .blessing-number {
+        font-family: "Cinzel Decorative", serif;
+        font-size: 42px;
+        color: var(--gold);
+        display: block;
+        text-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+      }
+      .blessing-label {
+        font-size: 12px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: rgba(253, 248, 238, 0.5);
+        margin-top: 8px;
+        display: block;
+      }
+
+      /* ===== FOOTER ===== */
+      footer {
+        background: var(--black);
+        padding: 60px 24px;
+        text-align: center;
+        border-top: 1px solid rgba(212, 175, 55, 0.1);
+        position: relative;
+        z-index: 10;
+      }
+      .footer-arabic {
+        font-family: "Amiri", serif;
+        font-size: 28px;
+        color: var(--gold);
+        text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        margin-bottom: 16px;
+        display: block;
+      }
+      .footer-text {
+        font-size: 13px;
+        letter-spacing: 3px;
+        color: rgba(253, 248, 238, 0.3);
+        text-transform: uppercase;
+      }
+
+      /* ===== KEYFRAME ANIMATIONS ===== */
+      @keyframes fadeSlideUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes shimmer {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(-2deg);
+        }
+        50% {
+          transform: translateY(-18px) rotate(2deg);
+        }
+      }
+      @keyframes twinkle {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.4;
+          transform: scale(0.7);
+        }
+      }
+      @keyframes lanternSway {
+        0%,
+        100% {
+          transform: rotate(-4deg);
+        }
+        50% {
+          transform: rotate(4deg);
+        }
+      }
+      @keyframes lanternPulse {
+        0%,
+        100% {
+          opacity: 0.6;
+          transform: translate(-50%, -50%) scale(1);
+        }
+        50% {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1.3);
+        }
+      }
+      @keyframes borderGlow {
+        0%,
+        100% {
+          opacity: 0.5;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+      @keyframes borderRotate {
+        0% {
+          background-position: 0% 0%;
+        }
+        100% {
+          background-position: 400% 0%;
+        }
+      }
+      @keyframes scrollPulse {
+        0%,
+        100% {
+          opacity: 0.3;
+          transform: scaleY(1);
+        }
+        50% {
+          opacity: 1;
+          transform: scaleY(1.2);
+        }
+      }
+      @keyframes sparkleAppear {
+        0% {
+          opacity: 0;
+          transform: scale(0) rotate(0deg);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.2) rotate(180deg);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(0) rotate(360deg);
+        }
+      }
+
+      /* ===== SPARKLE ELEMENT ===== */
+      .sparkle {
+        position: fixed;
+        pointer-events: none;
+        z-index: 200;
+        color: var(--gold);
+        font-size: 16px;
+        animation: sparkleAppear 0.8s ease forwards;
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 768px) {
+        nav {
+          padding: 16px 20px;
+        }
+        .nav-links {
+          display: none;
+        }
+        section {
+          padding: 80px 20px;
+        }
+        .greeting-card-inner {
+          padding: 40px 24px;
+        }
+        .lantern:nth-child(2),
+        .lantern:nth-child(4) {
+          display: none;
+        }
+        .crescent-wrap {
+          right: 4%;
+        }
+        .crescent {
+          width: 55px;
+          height: 55px;
+        }
+        .crescent::before {
+          width: 55px;
+          height: 55px;
+        }
+        .crescent::after {
+          width: 45px;
+          height: 45px;
+        }
+        .blessings-row {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 480px) {
+        .blessings-row {
+          grid-template-columns: 1fr;
+        }
+        .dua-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- Background Canvas -->
+    <canvas id="bgCanvas"></canvas>
+    <canvas id="confettiCanvas"></canvas>
+
+    <!-- Decorative Overlays -->
+    <div class="geo-overlay"></div>
+    <div class="veil"></div>
+
+    <!-- ===== PAGE WRAPPER ===== -->
+    <div class="page-wrapper">
+      <!-- Navigation -->
+      <nav>
+        <div class="nav-logo">☽ Eid Mubarak</div>
+        <ul class="nav-links">
+          <li><a href="#duas">Duas</a></li>
+          <li><a href="#card">Greeting</a></li>
+          <li><a href="#blessings">Blessings</a></li>
+        </ul>
+        <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+          <span class="music-icon" id="musicIcon">♪</span>
+          <span id="musicText">Music</span>
+        </button>
+      </nav>
+
+      <!-- ===== HERO ===== -->
+      <section class="hero" id="hero">
+        <!-- Lanterns -->
+        <div class="lanterns-container" id="lanternContainer">
+          <div class="lantern">
+            <div class="lantern-top"></div>
+            <div class="lantern-string"></div>
+            <div class="lantern-body"><div class="lantern-glow"></div></div>
+            <div class="lantern-bottom"></div>
+          </div>
+          <div class="lantern">
+            <div class="lantern-top"></div>
+            <div class="lantern-string"></div>
+            <div class="lantern-body"><div class="lantern-glow"></div></div>
+            <div class="lantern-bottom"></div>
+          </div>
+          <div class="lantern">
+            <div class="lantern-top"></div>
+            <div class="lantern-string"></div>
+            <div class="lantern-body"><div class="lantern-glow"></div></div>
+            <div class="lantern-bottom"></div>
+          </div>
+          <div class="lantern">
+            <div class="lantern-top"></div>
+            <div class="lantern-string"></div>
+            <div class="lantern-body"><div class="lantern-glow"></div></div>
+            <div class="lantern-bottom"></div>
+          </div>
+        </div>
+
+        <!-- Crescent Moon -->
+        <div class="crescent-wrap" id="crescentWrap">
+          <div class="crescent"></div>
+          <span class="crescent-star">✦</span>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="bismillah">﷽</div>
+
+        <div class="ornament">
+          <div class="ornament-line"></div>
+          <div class="ornament-diamond"></div>
+          <div class="ornament-line right"></div>
+        </div>
+
+        <h1 class="hero-title" id="heroTitle">Eid Mubarak</h1>
+
+        <div class="hero-subtitle-ar">عيد مبارك</div>
+
+        <p class="hero-subtitle">
+          May this blessed Eid bring peace, happiness, and endless blessings to
+          you and your beloved family. Taqabbal Allahu minna wa minkum.
+        </p>
+
+        <button class="celebrate-btn" onclick="celebrate()">
+          ✦ Celebrate Eid ✦
+        </button>
+
+        <div class="scroll-indicator">
+          <span class="scroll-text">Discover</span>
+          <div class="scroll-line"></div>
+        </div>
+      </section>
+
+      <!-- Mosque Row -->
+      <div class="mosque-row">
+        <svg
+          class="mosque-svg"
+          viewBox="0 0 1400 120"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="xMidYMax meet"
+        >
+          <path
+            d="M0,120 L0,80 L40,80 L40,60 L60,40 L60,20 Q70,0 80,20 L80,40 L100,60 L100,80 L140,80 L140,120 Z"
+          />
+          <path
+            d="M150,120 L150,85 L160,85 L160,75 Q165,55 170,40 Q175,25 180,40 Q185,55 190,75 L190,85 L200,85 L200,120 Z"
+          />
+          <path
+            d="M220,120 L220,80 L230,80 L230,50 Q235,30 245,50 L245,80 L255,80 L255,120 Z"
+          />
+          <path
+            d="M270,120 L270,70 L300,40 L330,70 L330,120 Z M290,70 L300,55 L310,70 Z"
+          />
+          <rect x="270" y="68" width="60" height="6" rx="2" />
+          <path
+            d="M350,120 L350,80 L390,80 L390,60 L410,40 L410,20 Q420,0 430,20 L430,40 L450,60 L450,80 L490,80 L490,120 Z"
+          />
+          <path
+            d="M510,120 L510,70 L540,45 Q555,25 570,45 L600,70 L600,120 Z M540,68 L555,48 L570,68 Z"
+          />
+          <rect x="510" y="68" width="90" height="5" rx="2" />
+          <path
+            d="M620,120 L620,80 L640,80 L640,50 Q645,30 655,50 L655,80 L675,80 L675,120 Z"
+          />
+          <path
+            d="M690,120 L690,80 L730,80 L730,60 L750,40 L750,20 Q760,0 770,20 L770,40 L790,60 L790,80 L830,80 L830,120 Z"
+          />
+          <path
+            d="M840,120 L840,85 L850,85 L850,75 Q855,55 860,40 Q865,25 870,40 Q875,55 880,75 L880,85 L890,85 L890,120 Z"
+          />
+          <path
+            d="M910,120 L910,70 L940,45 Q955,25 970,45 L1000,70 L1000,120 Z"
+          />
+          <rect x="910" y="68" width="90" height="5" rx="2" />
+          <path
+            d="M1020,120 L1020,80 L1060,80 L1060,60 L1080,40 L1080,20 Q1090,0 1100,20 L1100,40 L1120,60 L1120,80 L1160,80 L1160,120 Z"
+          />
+          <path d="M1180,120 L1180,70 L1210,40 L1240,70 L1240,120 Z" />
+          <path
+            d="M1260,120 L1260,80 L1280,80 L1280,50 Q1285,30 1295,50 L1295,80 L1315,80 L1315,120 Z"
+          />
+          <path
+            d="M1330,120 L1330,85 L1340,75 Q1345,55 1355,40 Q1365,55 1370,75 L1380,85 L1380,120 Z"
+          />
+          <rect x="0" y="115" width="1400" height="5" />
+        </svg>
+      </div>
+
+      <!-- ===== DUA SECTION ===== -->
+      <section class="dua-section" id="duas">
+        <div class="section-title-wrap">
+          <span class="section-eyebrow">Sacred Words</span>
+          <h2 class="section-title">Duas & Blessings</h2>
+        </div>
+        <div class="dua-grid">
+          <div class="dua-card" data-animate>
+            <span class="dua-icon">🤲</span>
+            <div class="dua-arabic">تَقَبَّلَ اللَّهُ مِنَّا وَمِنْكُمْ</div>
+            <p class="dua-english">
+              "May Allah accept (good deeds) from us and from you. May He shower
+              your home with His mercy and fill your heart with His light."
+            </p>
+          </div>
+          <div class="dua-card" data-animate>
+            <span class="dua-icon">☪️</span>
+            <div class="dua-arabic">عِيدٌ مُبَارَكٌ</div>
+            <p class="dua-english">
+              "May Allah accept your prayers, forgive your sins, and fill every
+              day of your life with happiness, peace, and boundless blessings."
+            </p>
+          </div>
+          <div class="dua-card" data-animate>
+            <span class="dua-icon">✨</span>
+            <div class="dua-arabic">كُلَّ عَامٍ وَأَنْتُمْ بِخَيْرٍ</div>
+            <p class="dua-english">
+              "May every year find you in good health. May Allah's blessings be
+              upon you, your family, and all those you hold dear this Eid."
+            </p>
+          </div>
+          <div class="dua-card" data-animate>
+            <span class="dua-icon">🕌</span>
+            <div class="dua-arabic">اللَّهُمَّ بَارِكْ لَنَا</div>
+            <p class="dua-english">
+              "O Allah, bless us. Grant us Your mercy, guidance, and grace. Let
+              this Eid be a celebration of faith, gratitude, and togetherness."
+            </p>
+          </div>
+          <div class="dua-card" data-animate>
+            <span class="dua-icon">🌙</span>
+            <div class="dua-arabic">
+              رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً
+            </div>
+            <p class="dua-english">
+              "Our Lord, grant us good in this world and good in the Hereafter,
+              and protect us from the punishment of the Fire. Ameen."
+            </p>
+          </div>
+          <div class="dua-card" data-animate>
+            <span class="dua-icon">💫</span>
+            <div class="dua-arabic">اللَّهُمَّ إِنَّكَ عَفُوٌّ</div>
+            <p class="dua-english">
+              "O Allah, You are Pardoning and You love to pardon, so pardon us.
+              May this Eid bring you closer to Allah and to those you love."
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== GREETING CARD ===== -->
+      <section class="card-section" id="card">
+        <div class="section-title-wrap">
+          <span class="section-eyebrow">With Love & Prayers</span>
+          <h2 class="section-title">A Blessed Message</h2>
+        </div>
+        <div class="greeting-card" id="greetingCard" data-animate-card>
+          <div class="corner tl"></div>
+          <div class="corner tr"></div>
+          <div class="corner bl"></div>
+          <div class="corner br"></div>
+          <div class="greeting-card-inner">
+            <div class="card-header">
+              <span class="card-eyebrow">✦ A Heartfelt Wish ✦</span>
+              <div class="card-main-title">Eid Mubarak</div>
+              <div
+                class="hero-subtitle-ar"
+                style="font-size: 22px; opacity: 0.9; margin-top: 8px"
+              >
+                عيد مبارك سعيد
+              </div>
+            </div>
+            <div class="card-divider">
+              <div class="card-divider-line"></div>
+              <span class="card-divider-gem">❈</span>
+              <div class="card-divider-line right"></div>
+            </div>
+            <p class="card-message">
+              As the crescent moon rises and the sound of takbeer fills the air,
+              may your heart be filled with the warmth of Allah's love and the
+              joy of this sacred celebration. May your fasts be accepted, your
+              prayers answered, and your sins forgiven. May this Eid bring your
+              family closer together, fill your table with abundance, and your
+              life with endless moments of peace, laughter, and gratitude.
+              <br /><br />
+              You are remembered in our prayers this beautiful day.
+              <br />
+              <span
+                style="
+                  color: var(--gold);
+                  font-style: normal;
+                  letter-spacing: 2px;
+                "
+                >Eid Mubarak.</span
+              >
+            </p>
+            <div class="card-divider" style="margin-top: 32px">
+              <div class="card-divider-line"></div>
+              <span class="card-divider-gem">❈</span>
+              <div class="card-divider-line right"></div>
+            </div>
+            <div class="card-signature">
+              <span class="card-sign-text">✦ May Allah Bless You Always ✦</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== BLESSINGS STATS ===== -->
+      <section class="blessings-section" id="blessings">
+        <div class="section-title-wrap">
+          <span class="section-eyebrow">A Season of</span>
+          <h2 class="section-title">Infinite Blessings</h2>
+        </div>
+        <div class="blessings-row">
+          <div class="blessing-item">
+            <span class="blessing-number">∞</span>
+            <span class="blessing-label">Mercy of Allah</span>
+          </div>
+          <div class="blessing-item">
+            <span class="blessing-number">99</span>
+            <span class="blessing-label">Names of Allah</span>
+          </div>
+          <div class="blessing-item">
+            <span class="blessing-number">5</span>
+            <span class="blessing-label">Pillars of Islam</span>
+          </div>
+          <div class="blessing-item">
+            <span class="blessing-number">1</span>
+            <span class="blessing-label">Blessed Eid</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer>
+        <span class="footer-arabic"
+          >بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</span
+        >
+        <p class="footer-text">
+          In the name of Allah, the Most Gracious, the Most Merciful
+        </p>
+        <p
+          style="
+            margin-top: 20px;
+            color: rgba(212, 175, 55, 0.3);
+            font-size: 12px;
+            letter-spacing: 2px;
+          "
+        >
+          ✦ Eid ul-Fitr ✦ Celebrating Faith, Family & Gratitude ✦
+        </p>
+      </footer>
+    </div>
+    <!-- end page-wrapper -->
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+      /* ===== CURSOR ===== */
+      const cursor = document.getElementById("cursor");
+      const cursorRing = document.getElementById("cursorRing");
+      let mx = window.innerWidth / 2,
+        my = window.innerHeight / 2;
+      let ringX = mx,
+        ringY = my;
+
+      document.addEventListener("mousemove", (e) => {
+        mx = e.clientX;
+        my = e.clientY;
+        cursor.style.left = mx + "px";
+        cursor.style.top = my + "px";
+      });
+      (function animateRing() {
+        ringX += (mx - ringX) * 0.12;
+        ringY += (my - ringY) * 0.12;
+        cursorRing.style.left = ringX + "px";
+        cursorRing.style.top = ringY + "px";
+        requestAnimationFrame(animateRing);
+      })();
+
+      /* ===== CANVAS SETUP ===== */
+      const bgCanvas = document.getElementById("bgCanvas");
+      const bgCtx = bgCanvas.getContext("2d");
+      const confCanvas = document.getElementById("confettiCanvas");
+      const confCtx = confCanvas.getContext("2d");
+
+      function resizeCanvases() {
+        bgCanvas.width = confCanvas.width = window.innerWidth;
+        bgCanvas.height = confCanvas.height = window.innerHeight;
+      }
+      resizeCanvases();
+      window.addEventListener("resize", resizeCanvases);
+
+      /* ===== PARTICLES ===== */
+      class Particle {
+        constructor() {
+          this.reset();
+        }
+        reset() {
+          this.x = Math.random() * bgCanvas.width;
+          this.y = Math.random() * bgCanvas.height;
+          this.size = Math.random() * 2.5 + 0.5;
+          this.speedX = (Math.random() - 0.5) * 0.3;
+          this.speedY = -Math.random() * 0.5 - 0.1;
+          this.opacity = Math.random() * 0.6 + 0.1;
+          this.life = 0;
+          this.maxLife = Math.random() * 300 + 200;
+          this.type = Math.random() > 0.7 ? "star" : "dust";
+        }
+        update() {
+          this.x += this.speedX;
+          this.y += this.speedY;
+          this.life++;
+          if (this.life > this.maxLife || this.y < -10) this.reset();
+        }
+        draw(ctx) {
+          const progress = this.life / this.maxLife;
+          const fade =
+            progress < 0.1
+              ? progress * 10
+              : progress > 0.8
+                ? (1 - progress) * 5
+                : 1;
+          ctx.save();
+          ctx.globalAlpha = this.opacity * fade;
+          if (this.type === "star") {
+            ctx.fillStyle = "#F5D06B";
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = "#D4AF37";
+            ctx.beginPath();
+            for (let i = 0; i < 4; i++) {
+              const angle = (i / 4) * Math.PI * 2;
+              const r1 = this.size * 2,
+                r2 = this.size * 0.6;
+              const x1 = this.x + Math.cos(angle) * r1;
+              const y1 = this.y + Math.sin(angle) * r1;
+              const x2 = this.x + Math.cos(angle + Math.PI / 4) * r2;
+              const y2 = this.y + Math.sin(angle + Math.PI / 4) * r2;
+              if (i === 0) ctx.moveTo(x1, y1);
+              else ctx.lineTo(x1, y1);
+              ctx.lineTo(x2, y2);
+            }
+            ctx.closePath();
+            ctx.fill();
+          } else {
+            ctx.fillStyle = "#D4AF37";
+            ctx.shadowBlur = 6;
+            ctx.shadowColor = "#D4AF37";
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+          }
+          ctx.restore();
+        }
+      }
+
+      /* ===== FIREWORK ===== */
+      class Firework {
+        constructor(x, y) {
+          this.x = x || Math.random() * bgCanvas.width;
+          this.y = y || Math.random() * bgCanvas.height * 0.6;
+          this.particles = [];
+          const count = 60 + Math.floor(Math.random() * 40);
+          const colors = [
+            "#D4AF37",
+            "#F5D06B",
+            "#FFF0A0",
+            "#8B6914",
+            "#ffffff",
+            "#FFD700",
+            "#B8860B",
+          ];
+          const c = colors[Math.floor(Math.random() * colors.length)];
+          for (let i = 0; i < count; i++) {
+            const angle = (i / count) * Math.PI * 2;
+            const speed = Math.random() * 4 + 1.5;
+            this.particles.push({
+              x: this.x,
+              y: this.y,
+              vx: Math.cos(angle) * speed,
+              vy: Math.sin(angle) * speed,
+              life: 1,
+              decay: Math.random() * 0.012 + 0.008,
+              size: Math.random() * 3 + 1,
+              color: c,
+            });
+          }
+        }
+        update() {
+          this.particles.forEach((p) => {
+            p.x += p.vx;
+            p.y += p.vy;
+            p.vy += 0.05; // gravity
+            p.life -= p.decay;
+            p.vx *= 0.98;
+            p.vy *= 0.98;
+          });
+          this.particles = this.particles.filter((p) => p.life > 0);
+        }
+        draw(ctx) {
+          this.particles.forEach((p) => {
+            ctx.save();
+            ctx.globalAlpha = p.life * 0.8;
+            ctx.fillStyle = p.color;
+            ctx.shadowBlur = 8;
+            ctx.shadowColor = p.color;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
+          });
+        }
+        isDead() {
+          return this.particles.length === 0;
+        }
+      }
+
+      /* ===== CONFETTI ===== */
+      class ConfettiPiece {
+        constructor() {
+          this.x = Math.random() * confCanvas.width;
+          this.y = -20;
+          this.w = Math.random() * 10 + 5;
+          this.h = Math.random() * 6 + 3;
+          this.color = [
+            "#D4AF37",
+            "#F5D06B",
+            "#FFF0A0",
+            "#0A2718",
+            "#1A5C36",
+            "#8B6914",
+          ][Math.floor(Math.random() * 6)];
+          this.rotation = Math.random() * 360;
+          this.rotSpeed = (Math.random() - 0.5) * 6;
+          this.vx = (Math.random() - 0.5) * 3;
+          this.vy = Math.random() * 3 + 2;
+          this.life = 1;
+          this.decay = 0.003;
+        }
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+          this.rotation += this.rotSpeed;
+          this.vy += 0.03;
+          if (this.y > confCanvas.height) this.life = 0;
+        }
+        draw(ctx) {
+          ctx.save();
+          ctx.globalAlpha = this.life;
+          ctx.translate(this.x, this.y);
+          ctx.rotate((this.rotation * Math.PI) / 180);
+          ctx.fillStyle = this.color;
+          ctx.fillRect(-this.w / 2, -this.h / 2, this.w, this.h);
+          ctx.restore();
+        }
+      }
+
+      /* ===== SCENE STATE ===== */
+      const particles = Array.from({ length: 120 }, () => new Particle());
+      const fireworks = [];
+      const confetti = [];
+      let isAnimating = true;
+
+      /* ===== ANIMATION LOOP ===== */
+      function drawBg(t) {
+        bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
+        // Gradient sky
+        const grad = bgCtx.createLinearGradient(0, 0, 0, bgCanvas.height);
+        grad.addColorStop(0, "#030A06");
+        grad.addColorStop(0.4, "#0A2718");
+        grad.addColorStop(1, "#030A06");
+        bgCtx.fillStyle = grad;
+        bgCtx.fillRect(0, 0, bgCanvas.width, bgCanvas.height);
+
+        // Subtle aurora bands
+        const aurora = bgCtx.createLinearGradient(
+          0,
+          0,
+          bgCanvas.width,
+          bgCanvas.height * 0.6,
+        );
+        aurora.addColorStop(0, "transparent");
+        aurora.addColorStop(0.5, "rgba(26,92,54,0.07)");
+        aurora.addColorStop(1, "transparent");
+        bgCtx.fillStyle = aurora;
+        bgCtx.fillRect(0, 0, bgCanvas.width, bgCanvas.height * 0.6);
+
+        // Particles
+        particles.forEach((p) => {
+          p.update();
+          p.draw(bgCtx);
+        });
+
+        // Fireworks
+        for (let i = fireworks.length - 1; i >= 0; i--) {
+          fireworks[i].update();
+          fireworks[i].draw(bgCtx);
+          if (fireworks[i].isDead()) fireworks.splice(i, 1);
+        }
+      }
+
+      function drawConfettiLayer() {
+        confCtx.clearRect(0, 0, confCanvas.width, confCanvas.height);
+        for (let i = confetti.length - 1; i >= 0; i--) {
+          confetti[i].update();
+          confetti[i].draw(confCtx);
+          if (confetti[i].life <= 0) confetti.splice(i, 1);
+        }
+      }
+
+      let lastFWTime = 0;
+      function loop(t) {
+        if (!isAnimating) return;
+        drawBg(t);
+        drawConfettiLayer();
+        // Auto fireworks
+        if (t - lastFWTime > 3000) {
+          fireworks.push(new Firework());
+          lastFWTime = t;
+        }
+        requestAnimationFrame(loop);
+      }
+      requestAnimationFrame(loop);
+
+      /* ===== INITIAL BURST ===== */
+      function initialBurst() {
+        // Confetti burst
+        for (let i = 0; i < 150; i++) {
+          setTimeout(() => confetti.push(new ConfettiPiece()), i * 12);
+        }
+        // Multiple fireworks
+        [0, 400, 800, 1200, 1600].forEach((delay) => {
+          setTimeout(() => {
+            fireworks.push(
+              new Firework(
+                bgCanvas.width * (0.2 + Math.random() * 0.6),
+                bgCanvas.height * (0.1 + Math.random() * 0.4),
+              ),
+            );
+          }, delay);
+        });
+      }
+      setTimeout(initialBurst, 1500);
+
+      /* ===== CELEBRATE BUTTON ===== */
+      function celebrate() {
+        for (let i = 0; i < 200; i++) {
+          setTimeout(() => confetti.push(new ConfettiPiece()), i * 8);
+        }
+        for (let i = 0; i < 8; i++) {
+          setTimeout(() => {
+            fireworks.push(
+              new Firework(
+                bgCanvas.width * (0.1 + Math.random() * 0.8),
+                bgCanvas.height * (0.05 + Math.random() * 0.5),
+              ),
+            );
+          }, i * 200);
+        }
+      }
+
+      /* ===== SPARKLE ON HOVER ===== */
+      const heroTitle = document.getElementById("heroTitle");
+      heroTitle.addEventListener("mousemove", (e) => {
+        if (Math.random() > 0.6) createSparkle(e.clientX, e.clientY);
+      });
+
+      function createSparkle(x, y) {
+        const s = document.createElement("div");
+        s.className = "sparkle";
+        s.textContent = ["✦", "★", "✧", "✶", "✸"][
+          Math.floor(Math.random() * 5)
+        ];
+        s.style.left = x + (Math.random() - 0.5) * 40 + "px";
+        s.style.top = y + (Math.random() - 0.5) * 40 + "px";
+        s.style.fontSize = 10 + Math.random() * 14 + "px";
+        document.body.appendChild(s);
+        setTimeout(() => s.remove(), 800);
+      }
+
+      /* ===== MOUSE PARALLAX FOR LANTERNS ===== */
+      document.addEventListener("mousemove", (e) => {
+        const xRatio = e.clientX / window.innerWidth - 0.5;
+        const yRatio = e.clientY / window.innerHeight - 0.5;
+        const lanterns = document.querySelectorAll(".lantern");
+        lanterns.forEach((l, i) => {
+          const factor = i % 2 === 0 ? 1 : -1;
+          l.style.transform += ` translateX(${xRatio * 15 * factor}px) translateY(${yRatio * 8}px)`;
+        });
+        const crescent = document.getElementById("crescentWrap");
+        if (crescent) {
+          crescent.style.transform = `translate(${xRatio * -20}px, ${yRatio * -10}px)`;
+        }
+      });
+
+      /* ===== SCROLL ANIMATIONS ===== */
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry, idx) => {
+            if (entry.isIntersecting) {
+              const el = entry.target;
+              if (el.dataset.animate !== undefined) {
+                const siblings = [...el.parentNode.children];
+                const i = siblings.indexOf(el);
+                setTimeout(() => el.classList.add("visible"), i * 120);
+                observer.unobserve(el);
+              }
+              if (el.dataset.animateCard !== undefined) {
+                el.classList.add("visible");
+                observer.unobserve(el);
+              }
+            }
+          });
+        },
+        { threshold: 0.15 },
+      );
+
+      document
+        .querySelectorAll("[data-animate]")
+        .forEach((el) => observer.observe(el));
+      document
+        .querySelectorAll("[data-animate-card]")
+        .forEach((el) => observer.observe(el));
+
+      /* ===== PARALLAX ===== */
+      window.addEventListener("scroll", () => {
+        const scrollY = window.scrollY;
+        const hero = document.getElementById("hero");
+        if (hero) hero.style.transform = `translateY(${scrollY * 0.25}px)`;
+      });
+
+      /* ===== MUSIC ===== */
+      let audioCtx = null;
+      let musicPlaying = false;
+      let gainNode = null;
+      let oscillators = [];
+
+      function startMusic() {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        gainNode = audioCtx.createGain();
+        gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+        gainNode.gain.linearRampToValueAtTime(0.08, audioCtx.currentTime + 2);
+        gainNode.connect(audioCtx.destination);
+
+        // Gentle ambient tones - Pentatonic scale for an Eastern/peaceful feel
+        const notes = [
+          261.63, 293.66, 329.63, 392.0, 440.0, 523.25, 587.33, 659.25,
+        ];
+        const chordNotes = [261.63, 329.63, 392.0, 523.25];
+
+        chordNotes.forEach((freq, i) => {
+          const osc = audioCtx.createOscillator();
+          const oscGain = audioCtx.createGain();
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+          oscGain.gain.setValueAtTime(0.03 - i * 0.005, audioCtx.currentTime);
+          osc.connect(oscGain);
+          oscGain.connect(gainNode);
+          osc.start();
+          oscillators.push(osc);
+        });
+
+        // Gentle melody
+        let t = audioCtx.currentTime + 1;
+        const melody = [
+          523.25, 587.33, 659.25, 587.33, 523.25, 440.0, 392.0, 440.0,
+        ];
+        function playMelodyNote(idx) {
+          const osc = audioCtx.createOscillator();
+          const g = audioCtx.createGain();
+          osc.type = "triangle";
+          osc.frequency.setValueAtTime(melody[idx], t);
+          g.gain.setValueAtTime(0, t);
+          g.gain.linearRampToValueAtTime(0.04, t + 0.1);
+          g.gain.linearRampToValueAtTime(0, t + 0.7);
+          osc.connect(g);
+          g.connect(gainNode);
+          osc.start(t);
+          osc.stop(t + 0.8);
+          t += 0.9;
+          if (musicPlaying)
+            setTimeout(
+              () => playMelodyNote((idx + 1) % melody.length),
+              0.85 * 1000,
+            );
+        }
+        setTimeout(() => {
+          if (musicPlaying) playMelodyNote(0);
+        }, 1000);
+      }
+
+      function stopMusic() {
+        if (gainNode) {
+          gainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 1.5);
+          setTimeout(() => {
+            oscillators.forEach((o) => {
+              try {
+                o.stop();
+              } catch (e) {}
+            });
+            oscillators = [];
+            if (audioCtx) {
+              audioCtx.close();
+              audioCtx = null;
+            }
+          }, 1600);
+        }
+      }
+
+      function toggleMusic() {
+        musicPlaying = !musicPlaying;
+        const icon = document.getElementById("musicIcon");
+        const text = document.getElementById("musicText");
+        if (musicPlaying) {
+          startMusic();
+          icon.textContent = "♫";
+          text.textContent = "Playing";
+        } else {
+          stopMusic();
+          icon.textContent = "♪";
+          text.textContent = "Music";
+        }
+      }
+
+      /* ===== CLICK FIREWORK ===== */
+      document.addEventListener("click", (e) => {
+        if (
+          e.target.classList.contains("celebrate-btn") ||
+          e.target.classList.contains("music-btn")
+        )
+          return;
+        fireworks.push(new Firework(e.clientX, e.clientY));
+        createSparkle(e.clientX, e.clientY);
+        createSparkle(e.clientX, e.clientY);
+      });
+    </script>
+  </body>
+</html>

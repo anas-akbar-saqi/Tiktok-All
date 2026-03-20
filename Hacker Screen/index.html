@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hacker Screen</title>
+  </head>
+  <body
+    style="
+      background: black;
+      color: lime;
+      font-family: monospace;
+      text-align: center;
+      margin-top: 100px;
+    "
+  >
+    <h2 id="text">Initializing...</h2>
+
+    <script>
+      let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+      let text = document.getElementById("text");
+
+      function generateFake() {
+        let result = "";
+        for (let i = 0; i < 20; i++) {
+          result += chars[Math.floor(Math.random() * chars.length)];
+        }
+        text.innerText = result;
+      }
+
+      let interval = setInterval(generateFake, 100);
+
+      setTimeout(() => {
+        clearInterval(interval);
+        text.innerText = "ACCESS GRANTED";
+      }, 4000);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Visualization Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(
+          to bottom right,
+          #2d89ff,
+          #0d47a1
+        ); /* Blue Gradient */
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .dashboard-container {
+        width: 90%;
+        max-width: 1200px;
+        background-color: #ffffff;
+        color: #333;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        padding: 20px;
+      }
+
+      .dashboard-header {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 2rem;
+        font-weight: bold;
+      }
+
+      .charts-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 10px;
+      }
+
+      .chart-item {
+        background-color: #f9f9f9;
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <header class="dashboard-header">
+        <h1>Data Visualization Dashboard</h1>
+      </header>
+      <div class="charts-container">
+        <div class="chart-item">
+          <canvas id="barChart"></canvas>
+        </div>
+        <div class="chart-item">
+          <canvas id="lineChart"></canvas>
+        </div>
+        <div class="chart-item">
+          <canvas id="pieChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const barCtx = document.getElementById("barChart").getContext("2d");
+      new Chart(barCtx, {
+        type: "bar",
+        data: {
+          labels: ["January", "February", "March", "April", "May", "June"],
+          datasets: [
+            {
+              label: "Monthly Sales ($)",
+              data: [12000, 15000, 10000, 17000, 20000, 25000],
+              backgroundColor: [
+                "#ff6384",
+                "#36a2eb",
+                "#cc65fe",
+                "#ffce56",
+                "#4bc0c0",
+                "#9966ff",
+              ],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { position: "top" },
+          },
+          scales: {
+            y: { beginAtZero: true },
+          },
+        },
+      });
+
+      const lineCtx = document.getElementById("lineChart").getContext("2d");
+      new Chart(lineCtx, {
+        type: "line",
+        data: {
+          labels: ["January", "February", "March", "April", "May", "June"],
+          datasets: [
+            {
+              label: "Website Traffic",
+              data: [3000, 4000, 3500, 4500, 5000, 6000],
+              backgroundColor: "rgba(54, 162, 235, 0.2)",
+              borderColor: "rgba(54, 162, 235, 1)",
+              borderWidth: 2,
+              tension: 0.4,
+              fill: true,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { position: "top" },
+          },
+          scales: {
+            y: { beginAtZero: true },
+          },
+        },
+      });
+
+      const pieCtx = document.getElementById("pieChart").getContext("2d");
+      new Chart(pieCtx, {
+        type: "pie",
+        data: {
+          labels: ["Desktop", "Tablet", "Mobile"],
+          datasets: [
+            {
+              data: [55, 25, 20],
+              backgroundColor: ["#ff6384", "#36a2eb", "#cc65fe"],
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { position: "top" },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

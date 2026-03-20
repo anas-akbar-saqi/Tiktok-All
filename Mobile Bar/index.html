@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mobile Bottom Navigation</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --tab-bg: rgba(255, 255, 255, 0.8);
+        --tab-text: #1d1d1f;
+        --tab-accent: #9b59ff;
+        --tab-blur: 15px;
+      }
+
+      [data-theme="dark"] {
+        --tab-bg: rgba(20, 20, 20, 0.8);
+        --tab-text: #ffffff;
+        --tab-accent: #00f5ff;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Inter", sans-serif;
+        background: #000;
+      }
+
+      .bottom-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 70px;
+        background: var(--tab-bg);
+        backdrop-filter: blur(var(--tab-blur));
+        -webkit-backdrop-filter: blur(var(--tab-blur));
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        z-index: 9999;
+        padding-bottom: env(safe-area-inset-bottom);
+      }
+
+      .nav-item {
+        text-decoration: none;
+        color: var(--tab-text);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        flex: 1;
+      }
+
+      .nav-item i {
+        font-size: 1.4rem;
+        transition: 0.3s;
+      }
+
+      .nav-item span {
+        font-size: 0.7rem;
+        font-weight: 600;
+      }
+
+      .nav-item:hover i,
+      .nav-item.active i {
+        color: var(--tab-accent);
+        transform: translateY(-5px);
+      }
+
+      .badge {
+        position: absolute;
+        top: -2px;
+        right: 25%;
+        background: #000;
+        color: white;
+        font-size: 10px;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid var(--tab-bg);
+        font-weight: bold;
+      }
+
+      [data-theme="dark"] .badge {
+        background: #fff;
+        color: #000;
+      }
+
+      @media (min-width: 769px) {
+        .bottom-nav {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body data-theme="dark">
+    <div class="bottom-nav">
+      <a href="#" class="nav-item active">
+        <i class="ri-home-5-line"></i>
+        <span>Home</span>
+      </a>
+      <a href="#" class="nav-item">
+        <i class="ri-layout-grid-line"></i>
+        <span>Shop</span>
+      </a>
+      <a href="#" class="nav-item">
+        <i class="ri-user-line"></i>
+        <span>Account</span>
+      </a>
+      <a href="#" class="nav-item">
+        <i class="ri-search-line"></i>
+        <span>Search</span>
+      </a>
+      <a href="#" class="nav-item">
+        <i class="ri-heart-line"></i>
+        <span class="badge">0</span>
+        <span>Wishlist</span>
+      </a>
+    </div>
+  </body>
+</html>

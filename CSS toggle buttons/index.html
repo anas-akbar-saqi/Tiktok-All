@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Button Toggle</title>
+  <style>
+    * {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      line-height: 1;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      margin: 0;
+      background-color: #f1f9f9;
+    }
+
+    .gd {
+      display: grid;
+    }
+
+    #container {
+      width: 600px;
+      margin: 80px auto;
+      counter-reset: button-counter;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .toggle-button-container {
+      position: relative;
+      width: 200px;
+      height: 140px;
+      box-sizing: border-box;
+    }
+
+    .toggle-button {
+      position: relative;
+      height: 100px;
+      margin: 20px;
+      background-color: #fff;
+      box-shadow: 0 10px 20px -8px #c5d6d6;
+      border-radius: 4px;
+    }
+
+    .toggle-button:before {
+      counter-increment: button-counter;
+      content: counter(button-counter);
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      color: #d7e3e3;
+      font-size: 12px;
+      line-height: 1;
+      padding: 5px;
+    }
+
+    .knob,
+    .btn-bg {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    .btn {
+      position: relative;
+      top: 50%;
+      width: 74px;
+      height: 36px;
+      margin: -20px auto 0 auto;
+      overflow: hidden;
+    }
+
+    .btn.btn-pill,
+    .btn.btn-pill>.btn-bg {
+      border-radius: 100px;
+    }
+
+    .btn.btn-rect {
+      border-radius: 2px;
+    }
+
+    .checkbox {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      opacity: 0;
+      cursor: pointer;
+      z-index: 3;
+    }
+
+    .knob {
+      z-index: 2;
+    }
+
+    .btn-bg {
+      width: 100%;
+      background-color: #ebf7fc;
+      transition: 0.3s ease all;
+      z-index: 1;
+    }
+
+    #button-10 .knob:before,
+    #button-10 .knob:after,
+    #button-10 .knob span {
+      position: absolute;
+      top: 4px;
+      width: 20px;
+      height: 10px;
+      font-size: 10px;
+      font-weight: bold;
+      text-align: center;
+      line-height: 1;
+      padding: 9px 4px;
+      border-radius: 2px;
+      transition: 0.3s ease all;
+    }
+
+    #button-10 .knob:before {
+      content: "";
+      left: 4px;
+      background-color: #03a9f4;
+    }
+
+    #button-10 .knob:after {
+      content: "NO";
+      right: 4px;
+      color: #4e4e4e;
+    }
+
+    #button-10 .knob span {
+      display: inline-block;
+      left: 4px;
+      color: #fff;
+      z-index: 1;
+    }
+
+    #button-10 .checkbox:checked+.knob span {
+      color: #4e4e4e;
+    }
+
+    #button-10 .checkbox:checked+.knob:before {
+      left: 42px;
+      background-color: #f44336;
+    }
+
+    #button-10 .checkbox:checked+.knob:after {
+      color: #fff;
+    }
+
+    #button-10 .checkbox:checked~.btn-bg {
+      background-color: #fcebeb;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="" container" class="" gd">
+
+    <div class="toggle-button-container">
+      <div class="toggle-button gd">
+        <div class="" btn btn-rect" id="" button-10">
+          <input type="checkbox" class="" checkbox" />
+          <div class="knob">
+            <span>YES</span>
+          </div>
+          <div class="" btn-bg"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+
+</html>

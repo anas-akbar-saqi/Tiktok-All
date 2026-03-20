@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Casio fx-991ES PLUS</title>
+    <link rel="stylesheet" href="./stylr.css">
+  </head>
+  <body>
+    <div class="page-bg">
+      <div class="calculator" id="calculator">
+        <div class="brand-section">
+          <div class="brand-left">
+            <div class="casio-logo">CASIO</div>
+            <div class="model-row">
+              <span class="model-txt">fx-991ES PLUS</span>
+              <span class="twopower">TWO WAY POWER</span>
+            </div>
+            <div class="natural-txt">NATURAL-V.P.A.M.</div>
+          </div>
+          <div class="solar-panel">
+            <div class="solar-grid">
+              <div class="sc"></div>
+              <div class="sc"></div>
+              <div class="sc"></div>
+              <div class="sc"></div>
+              <div class="sc"></div>
+              <div class="sc"></div>
+              <div class="sc"></div>
+              <div class="sc"></div>
+              <div class="sc"></div>
+              <div class="sc"></div>
+              <div class="sc"></div>
+              <div class="sc"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="display-housing">
+          <div class="display-screen" id="display-screen">
+            <div class="status-bar">
+              <div class="sb-left">
+                <span class="ind" id="ind-shift">S</span>
+                <span class="ind" id="ind-alpha">A</span>
+                <span class="ind" id="ind-m">M</span>
+              </div>
+              <div class="sb-right">
+                <span class="ind active" id="ind-math">Math</span>
+                <span class="ind-tri">▼▲</span>
+                <span class="ind active" id="ind-deg">D</span>
+                <span class="ind" id="ind-rad">R</span>
+                <span class="ind" id="ind-grad">G</span>
+              </div>
+            </div>
+            <div class="input-row">
+              <div class="lcd-input" id="display-input"></div>
+              <span class="lcd-cursor" id="lcd-cursor">▌</span>
+            </div>
+            <div class="lcd-result" id="display-result"></div>
+            <div class="watermark">Anas Rajput</div>
+          </div>
+        </div>
+
+        <div class="btn-zone">
+          <div class="ctrl-row">
+            <button class="btn c-ctrl" data-action="shift" id="btn-shift">
+              <span class="lm">SHIFT</span>
+            </button>
+            <button
+              class="btn c-ctrl c-alpha"
+              data-action="alpha"
+              id="btn-alpha"
+            >
+              <span class="lm">ALPHA</span>
+            </button>
+            <div class="replay-wrap">
+              <div class="replay-ring" id="replay-ring">
+                <button class="rnav r-up" data-action="nav-up">▲</button>
+                <button class="rnav r-dn" data-action="nav-down">▼</button>
+                <button class="rnav r-lt" data-action="nav-left">◀</button>
+                <button class="rnav r-rt" data-action="nav-right">▶</button>
+                <div class="replay-core" data-action="nav-center">
+                  <span class="replay-txt">REPLAY</span>
+                </div>
+              </div>
+            </div>
+            <button class="btn c-ctrl" data-action="mode">
+              <span class="ls">SETUP</span>
+              <span class="lm">MODE</span>
+            </button>
+            <button class="btn c-ctrl c-on" data-action="on">
+              <span class="ls">OFF</span>
+              <span class="lm">ON</span>
+            </button>
+          </div>
+
+          <div class="sci-row r5">
+            <button class="btn c-sci" data-action="calc">
+              <span class="ls">SOLVE</span>
+              <span class="lm">CALC</span>
+            </button>
+            <button class="btn c-sci" data-action="integral">
+              <span class="ls">d/dx</span>
+              <span class="lm intgl-lbl"
+                >∫<span class="intgl-box">□</span></span
+              >
+            </button>
+            <button class="btn c-sci" data-action="fraction">
+              <span class="ls">a<sup>b</sup>/<sub>c</sub></span>
+              <span class="lm frac-lbl"
+                ><span class="fl-top">□</span><span class="fl-bar"></span
+                ><span class="fl-bot">□</span></span
+              >
+            </button>
+            <button class="btn c-sci" data-action="inverse">
+              <span class="ls">x/</span>
+              <span class="lm">x<sup>-1</sup></span>
+            </button>
+            <button class="btn c-sci" data-action="logbox">
+              <span class="ls">10<sup>x</sup></span>
+              <span class="lm">log<sub>□</sub></span>
+            </button>
+          </div>
+
+          <div class="sci-row r6">
+            <button class="btn c-sci" data-action="matrix-op">
+              <span class="ls">■</span>
+              <span class="lm mat-sym">☰</span>
+            </button>
+            <button class="btn c-sci" data-action="sqrt">
+              <span class="ls">³√</span>
+              <span class="lm">√</span>
+            </button>
+            <button class="btn c-sci" data-action="square">
+              <span class="ls">DEC</span>
+              <span class="lm">x²</span>
+            </button>
+            <button class="btn c-sci" data-action="power">
+              <span class="ls">HEX</span>
+              <span class="lm">x<sup>□</sup></span>
+            </button>
+            <button class="btn c-sci" data-action="log">
+              <span class="ls">10<sup>x</sup></span>
+              <span class="lm">log</span>
+            </button>
+            <button class="btn c-sci" data-action="ln">
+              <span class="ls">e<sup>x</sup></span>
+              <span class="lm">ln</span>
+            </button>
+          </div>
+
+          <div class="sci-row r6">
+            <button class="btn c-sci" data-action="negate">
+              <span class="ls">↙r↗θ</span>
+              <span class="lm">(–)</span>
+            </button>
+            <button class="btn c-sci" data-action="dms">
+              <span class="ls">→r</span>
+              <span class="lm">°'"</span>
+            </button>
+            <button class="btn c-sci c-hyp" data-action="hyp" id="btn-hyp">
+              <span class="ls">Abs</span>
+              <span class="lm">hyp</span>
+            </button>
+            <button class="btn c-sci" data-action="sin">
+              <span class="ls">sin⁻¹</span>
+              <span class="lm">sin</span>
+            </button>
+            <button class="btn c-sci" data-action="cos">
+              <span class="ls">cos⁻¹</span>
+              <span class="lm">cos</span>
+            </button>
+            <button class="btn c-sci" data-action="tan">
+              <span class="ls">tan⁻¹</span>
+              <span class="lm">tan</span>
+            </button>
+          </div>
+
+          <div class="sci-row r6">
+            <button class="btn c-sci" data-action="rcl">
+              <span class="ls">STO</span>
+              <span class="lm">RCL</span>
+            </button>
+            <button class="btn c-sci" data-action="eng">
+              <span class="ls">←ENG</span>
+              <span class="lm">ENG</span>
+            </button>
+            <button class="btn c-sci" data-action="oparen">
+              <span class="ls">%</span>
+              <span class="lm">(</span>
+            </button>
+            <button class="btn c-sci" data-action="cparen">
+              <span class="ls">)</span>
+              <span class="lm">)</span>
+            </button>
+            <button class="btn c-sci" data-action="sd">
+              <span class="ls">←→Y</span>
+              <span class="lm">S⟺D</span>
+            </button>
+            <button class="btn c-mem" data-action="mem-plus">
+              <span class="ls">M–</span>
+              <span class="lm">M+</span>
+            </button>
+          </div>
+
+          <div class="num-section">
+            <div class="num-row">
+              <button class="btn c-num" data-action="digit" data-value="7">
+                <span class="ns">CONST</span>
+                <span class="lm">7</span>
+              </button>
+              <button class="btn c-num" data-action="digit" data-value="8">
+                <span class="ns">CONV</span>
+                <span class="lm">8</span>
+              </button>
+              <button class="btn c-num" data-action="digit" data-value="9">
+                <span class="ns">CLR</span>
+                <span class="lm">9</span>
+              </button>
+              <button class="btn c-del" data-action="del">
+                <span class="ns">INS</span>
+                <span class="lm">DEL</span>
+              </button>
+              <button class="btn c-ac" data-action="ac">
+                <span class="ns">OFF</span>
+                <span class="lm">AC</span>
+              </button>
+            </div>
+
+            <div class="num-row">
+              <button class="btn c-num" data-action="digit" data-value="4">
+                <span class="ns">MATRIX</span>
+                <span class="lm">4</span>
+              </button>
+              <button class="btn c-num" data-action="digit" data-value="5">
+                <span class="ns">VECTOR</span>
+                <span class="lm">5</span>
+              </button>
+              <button class="btn c-num" data-action="digit" data-value="6">
+                <span class="ns">nPr</span>
+                <span class="lm">6</span>
+              </button>
+              <button class="btn c-num c-op" data-action="multiply">
+                <span class="ns">nCr</span>
+                <span class="lm">×</span>
+              </button>
+              <button class="btn c-num c-op" data-action="divide">
+                <span class="lm">÷</span>
+              </button>
+            </div>
+
+            <div class="num-row">
+              <button class="btn c-num" data-action="digit" data-value="1">
+                <span class="ns">STAT</span>
+                <span class="lm">1</span>
+              </button>
+              <button class="btn c-num" data-action="digit" data-value="2">
+                <span class="ns">CMPLX</span>
+                <span class="lm">2</span>
+              </button>
+              <button class="btn c-num" data-action="digit" data-value="3">
+                <span class="ns">BASE</span>
+                <span class="lm">3</span>
+              </button>
+              <button class="btn c-num c-op" data-action="plus">
+                <span class="ns">Pol</span>
+                <span class="lm">+</span>
+              </button>
+              <button class="btn c-num c-op" data-action="minus">
+                <span class="ns">Rec</span>
+                <span class="lm">−</span>
+              </button>
+            </div>
+
+            <div class="num-row last-row">
+              <button class="btn c-num" data-action="digit" data-value="0">
+                <span class="ns">Rnd</span>
+                <span class="lm">0</span>
+              </button>
+              <button class="btn c-num" data-action="dot">
+                <span class="ns tiny-ns">Ran# Ran Int</span>
+                <span class="lm">.</span>
+                <span class="na">π &nbsp; e</span>
+              </button>
+              <button class="btn c-num" data-action="exp10">
+                <span class="ns">DRG▸</span>
+                <span class="lm">×10<sup>x</sup></span>
+              </button>
+              <button class="btn c-ans" data-action="ans-btn">
+                <span class="lm">Ans</span>
+              </button>
+              <button class="btn c-equals" data-action="equals">
+                <span class="lm">=</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hist-panel" id="history-panel">
+      <div class="hist-hdr">
+        <span>Calculation History</span>
+        <button id="history-clear">Clear</button>
+      </div>
+      <div class="hist-list" id="history-list"></div>
+    </div>
+    <button class="hist-toggle" id="history-toggle">⊞ History</button>
+
+    <div class="angle-badge" id="angle-badge" title="Click to cycle angle mode">
+      DEG
+    </div>
+  </body>
+</html>
