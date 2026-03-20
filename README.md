@@ -9,35 +9,6 @@ Simple, clean, and easy to use.
 
 ---
 
-## 🔥 Projects
-
-### 🔹 Typing Text Effect
-![Preview](https://via.placeholder.com/800x450.png?text=Typing+Effect)
-
-Smooth typing animation using JavaScript.
-
-👉 https://github.com/anas-akbar-saqi/tiktok-code-snippets/tree/main/typing-effect
-
----
-
-### 🔹 Animated Button
-![Preview](https://via.placeholder.com/800x450.png?text=Animated+Button)
-
-Modern hover animation using HTML & CSS.
-
-👉 https://github.com/anas-akbar-saqi/tiktok-code-snippets/tree/main/animated-button
-
----
-
-### 🔹 Glassmorphism Card
-![Preview](https://via.placeholder.com/800x450.png?text=Glass+UI+Card)
-
-Clean glass UI design with blur effect.
-
-👉 https://github.com/anas-akbar-saqi/tiktok-code-snippets/tree/main/glass-card
-
----
-
 ## 📌 How to use
 
 1. Open any project link  
