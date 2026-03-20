@@ -1,54 +1,65 @@
-# Tiktok-All
-# TikTok Code Snippets
+# 🚀 TikTok Code Snippets
 
-All code from my TikTok videos in one place. Clean, simple, and easy to use.
+<p align="center">
+  <img src="https://via.placeholder.com/900x250.png?text=TikTok+Code+Snippets" />
+</p>
 
----
-
-## 🚀 Projects
-
-### 🔹 Animated Button Effect
-![Preview](./animated-button/preview.png)
-
-Simple hover animation using HTML & CSS.
-
-👉 [View Code](./animated-button)
+All the code from my TikTok videos is available here.  
+Simple, clean, and easy to use.
 
 ---
+
+## 🔥 Projects
 
 ### 🔹 Typing Text Effect
-![Preview](./typing-effect/preview.png)
+![Preview](https://via.placeholder.com/800x450.png?text=Typing+Effect)
 
-Create a smooth typing animation with JavaScript.
+Smooth typing animation using JavaScript.
 
-👉 [View Code](./typing-effect)
+👉 https://github.com/anas-akbar-saqi/tiktok-code-snippets/tree/main/typing-effect
 
 ---
 
-### 🔹 Glassmorphism Card UI
-![Preview](./glass-card/preview.png)
+### 🔹 Animated Button
+![Preview](https://via.placeholder.com/800x450.png?text=Animated+Button)
 
-Modern UI card with blur glass effect.
+Modern hover animation using HTML & CSS.
 
-👉 [View Code](./glass-card)
+👉 https://github.com/anas-akbar-saqi/tiktok-code-snippets/tree/main/animated-button
+
+---
+
+### 🔹 Glassmorphism Card
+![Preview](https://via.placeholder.com/800x450.png?text=Glass+UI+Card)
+
+Clean glass UI design with blur effect.
+
+👉 https://github.com/anas-akbar-saqi/tiktok-code-snippets/tree/main/glass-card
 
 ---
 
 ## 📌 How to use
 
-- Open any project folder  
-- Copy the code  
-- Run it  
-- Customize and learn  
+1. Open any project link  
+2. Copy the code  
+3. Run it  
+4. Edit and learn  
 
 ---
 
-## 📲 Follow me
+## 🎯 About
 
-Watch videos and get code here. New projects added regularly.
+This repo is made for people who watch short coding videos but need full code.  
+No extra stuff. Just working examples.
+
+---
+
+## 📲 Follow
+
+More videos + more code coming regularly.
 
 ---
 
 ## ⭐ Support
 
-If this helped you, give it a star.
+If this helped you, give it a star ⭐
